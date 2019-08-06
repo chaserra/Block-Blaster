@@ -73,7 +73,7 @@ TrailRenderer:
   m_Time: 0.25
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.15
+    widthMultiplier: 0.18
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5069217450997305724}
-  - component: {fileID: 9004817316968174703}
+  - component: {fileID: 2622554966708489382}
   - component: {fileID: 519461613314200459}
   - component: {fileID: -3881067254276269982}
   - component: {fileID: 4809065582724573204}
@@ -173,8 +173,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &9004817316968174703
-BoxCollider:
+--- !u!135 &2622554966708489382
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -184,8 +184,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.5002661, z: 1.4843733}
-  m_Center: {x: 0, y: -0.007901669, z: 0.00003707409}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &519461613314200459
 Light:
   m_ObjectHideFlags: 0
@@ -559,7 +559,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5312,7 +5312,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 1.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2
