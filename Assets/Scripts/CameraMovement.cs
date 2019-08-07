@@ -14,11 +14,11 @@ public class CameraMovement : MonoBehaviour {
     [Header("Camera Rotation")]
     [SerializeField] float rotateSpeed = 90f;
     [SerializeField] float cameraRotationAngle = 35f;
-    [SerializeField] float turretRotationTreshold = 28f;
+    [SerializeField] float turretRotationTreshold = 35f;
 
 
     [Header("Camera Panning")]
-    [SerializeField] float panX = 1.25f;
+    [SerializeField] float panX = .45f;
     [SerializeField] float panSpeed = 5f;
 
     void Start() {

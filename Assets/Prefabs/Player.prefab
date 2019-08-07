@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07972814, y: -0.0018376642, z: -0.000009183568, w: 0.996815}
-  m_LocalPosition: {x: -0.014225872, y: 1.1296048, z: -2.5180779}
+  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
+  m_LocalPosition: {x: 0, y: 2, z: -3.2}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.4999999}
   m_Children: []
   m_Father: {fileID: 3648876530435263620}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 121.33101, z: 0}
+  m_LocalEulerAnglesHint: {x: 9, y: 0, z: 0}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -420,8 +420,8 @@ MonoBehaviour:
   turretBase: {fileID: 7737219160980262795}
   rotateSpeed: 90
   cameraRotationAngle: 35
-  turretRotationTreshold: 28
-  panX: 1.25
+  turretRotationTreshold: 35
+  panX: 0.45
   panSpeed: 5
 --- !u!1 &7737219160980262795
 GameObject:
