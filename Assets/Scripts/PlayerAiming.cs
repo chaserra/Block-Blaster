@@ -58,10 +58,10 @@ public class PlayerAiming : MonoBehaviour {
                 //TODO: Low-prio: Add cooldown bar UI
                 GameObject bullet = Instantiate(tankBullet, firePoint.transform.position, Quaternion.identity);
                 bullet.transform.localRotation = turretGun.rotation;
-                Destroy(bullet, 10f);
+                Destroy(bullet, 8f);
                 //TODO: Med-prio: Add turret retracting animation (for impact visuals)
             } else {
-                Debug.Log("Can't fire yet!"); //TODO: Low-prio: Remove or add sound effect
+                Debug.Log("Can't fire yet!"); //TODO: Low-prio: Remove comment or add sound effect
             }
         }
     }

@@ -54,7 +54,11 @@ public class CameraMovement : MonoBehaviour {
         Vector3 rotatedCamera = new Vector3(0, rotationAngle * multiplier, 0);
         var rotatedCameraQ = Quaternion.Euler(rotatedCamera);
         var rotateTime = Time.deltaTime * rotateSpeed;
-        var newRotation = Quaternion.RotateTowards(cameraPivot.transform.rotation, rotatedCameraQ, rotateTime);
+        var newRotation = Quaternion.RotateTowards(
+            cameraPivot.transform.rotation, 
+            rotatedCameraQ, 
+            rotateTime
+        );
 
         cameraPivot.transform.rotation = newRotation;
     }
