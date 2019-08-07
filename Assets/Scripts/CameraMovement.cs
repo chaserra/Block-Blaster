@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class CameraMovement : MonoBehaviour {
 
@@ -18,8 +19,8 @@ public class CameraMovement : MonoBehaviour {
 
 
     [Header("Camera Panning")]
-    [SerializeField] float panX = .45f;
-    [SerializeField] float panSpeed = 5f;
+    [SerializeField] float xPanLimit = .8f;
+    [SerializeField] float panSpeed = 500f;
 
     void Start() {
         
@@ -27,6 +28,7 @@ public class CameraMovement : MonoBehaviour {
 
     void Update() {
         CheckAngleAndRotate();
+        PanCamera();
     }
 
     private void CheckAngleAndRotate() {
@@ -36,17 +38,14 @@ public class CameraMovement : MonoBehaviour {
 
         if (angleModifier > -turretRotationTreshold && angleModifier < turretRotationTreshold) {
             RotateCamera(0f, -1f);
-            PanCamera(0f, -1f);
         }
 
         if (angleModifier > turretRotationTreshold) {
             RotateCamera(cameraRotationAngle, 1f);
-            PanCamera(panX, 1f);
         }
 
         if(angleModifier < -turretRotationTreshold) {
             RotateCamera(cameraRotationAngle, -1f);
-            PanCamera(panX, -1f);
         }
     }
 
@@ -63,12 +62,23 @@ public class CameraMovement : MonoBehaviour {
         cameraPivot.transform.rotation = newRotation;
     }
 
-    private void PanCamera(float xValue, float multiplier) {
-        Vector3 pannedCamera = new Vector3(xValue * multiplier, 0, 0);
-        var panTime = Time.deltaTime * panSpeed;
-        var newCameraPos = Vector3.Lerp(cameraPivot.transform.localPosition, pannedCamera, panTime);
+    private void PanCamera() {
+        if (CrossPlatformInputManager.GetButton("Fire1")) {
+            float xPan = CrossPlatformInputManager.GetAxis("Mouse X") * panSpeed * Time.deltaTime;
+            cameraPivot.transform.position = Vector3.Lerp(
+                cameraPivot.transform.position, 
+                new Vector3(cameraPivot.transform.position.x + xPan, cameraPivot.transform.position.y, cameraPivot.transform.position.z), 
+                Time.deltaTime
+            );
 
-        cameraPivot.transform.localPosition = newCameraPos;
+            float clampedX = Mathf.Clamp(cameraPivot.transform.localPosition.x, -xPanLimit, xPanLimit);
+
+            cameraPivot.transform.localPosition = new Vector3(
+                clampedX, 
+                cameraPivot.transform.localPosition.y,
+                cameraPivot.transform.localPosition.z
+            );
+        }
     }
 
 }
