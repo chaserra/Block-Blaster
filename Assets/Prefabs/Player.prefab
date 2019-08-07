@@ -103,7 +103,7 @@ MonoBehaviour:
     m_Bits: 256
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 3
+  antialiasingMode: 1
   temporalAntialiasing:
     jitterSpread: 0.75
     sharpness: 0.25
@@ -112,7 +112,7 @@ MonoBehaviour:
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
-    fastMode: 0
+    fastMode: 1
     keepAlpha: 0
   fog:
     enabled: 1
@@ -402,7 +402,7 @@ MonoBehaviour:
   baseRotateClamp: 65
   gunMaxLookUp: 45
   gunMaxLookDown: 3
-  rotateSpeed: 170
+  rotateSpeed: 15
   rateOfFire: 0.6
 --- !u!114 &1289552360887108908
 MonoBehaviour:
@@ -420,9 +420,9 @@ MonoBehaviour:
   turretBase: {fileID: 7737219160980262795}
   rotateSpeed: 90
   cameraRotationAngle: 35
-  turretRotationTreshold: 35
+  turretRotationTreshold: 34
   xPanLimit: 0.8
-  panSpeed: 400
+  panSpeed: 20
 --- !u!1 &7737219160980262795
 GameObject:
   m_ObjectHideFlags: 0

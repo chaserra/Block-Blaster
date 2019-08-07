@@ -15,12 +15,12 @@ public class CameraMovement : MonoBehaviour {
     [Header("Camera Rotation")]
     [SerializeField] float rotateSpeed = 90f;
     [SerializeField] float cameraRotationAngle = 35f;
-    [SerializeField] float turretRotationTreshold = 35f;
+    [SerializeField] float turretRotationTreshold = 34f;
 
 
     [Header("Camera Panning")]
     [SerializeField] float xPanLimit = .8f;
-    [SerializeField] float panSpeed = 500f;
+    [SerializeField] float panSpeed = 20f;
 
     void Start() {
         
@@ -63,8 +63,11 @@ public class CameraMovement : MonoBehaviour {
     }
 
     private void PanCamera() {
-        if (CrossPlatformInputManager.GetButton("Fire1")) {
+        if (CrossPlatformInputManager.GetButton("Fire1") || Input.touchCount > 0) {
             float xPan = CrossPlatformInputManager.GetAxis("Mouse X") * panSpeed * Time.deltaTime;
+            if(Input.touchCount > 0) {
+                xPan = Input.touches[0].deltaPosition.x * panSpeed * Time.deltaTime;
+            }
             cameraPivot.transform.position = Vector3.Lerp(
                 cameraPivot.transform.position, 
                 new Vector3(cameraPivot.transform.position.x + xPan, cameraPivot.transform.position.y, cameraPivot.transform.position.z), 
