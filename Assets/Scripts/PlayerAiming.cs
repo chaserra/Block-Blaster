@@ -7,12 +7,19 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerAiming : MonoBehaviour {
 
     //Cache
+    [Header("Object References")]
     [SerializeField] Transform turretBase;
     [SerializeField] Transform turretGun;
     [SerializeField] GameObject firePoint;
+    [SerializeField] GameObject tankBullet;
 
     //Parameters
-    [SerializeField] GameObject tankBullet;
+    [Header("Clamp Rotation")]
+    [SerializeField] float baseRotateClamp = 65f;
+    [SerializeField] float gunMaxLookUp = 45f;
+    [SerializeField] float gunMaxLookDown = 3f;
+
+    [Header("Config")]
     [SerializeField] float rotateSpeed = 150f;
     [Tooltip("Higher value means faster cooldown.")]
     [SerializeField] float rateOfFire = .6f;
@@ -37,9 +44,9 @@ public class PlayerAiming : MonoBehaviour {
             turretGun.transform.Rotate(-xRotate, 0, 0);
 
             float clampedX = turretGun.transform.localEulerAngles.x;
-            clampedX = Mathf.Clamp((clampedX <= 180) ? clampedX : -(360 - clampedX), -45f, -3f);
+            clampedX = Mathf.Clamp((clampedX <= 180) ? clampedX : -(360 - clampedX), -gunMaxLookUp, -gunMaxLookDown);
             float clampedY = turretBase.transform.localEulerAngles.y;
-            clampedY = Mathf.Clamp((clampedY <= 180) ? clampedY : -(360 - clampedY), -55f, 55f);
+            clampedY = Mathf.Clamp((clampedY <= 180) ? clampedY : -(360 - clampedY), -baseRotateClamp, baseRotateClamp);
 
             turretBase.transform.rotation = Quaternion.Euler(0, clampedY, 0);
             turretGun.transform.rotation = Quaternion.Euler(clampedX, clampedY, 0);
