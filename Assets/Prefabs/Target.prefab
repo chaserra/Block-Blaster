@@ -125,3 +125,6 @@ MonoBehaviour:
   targetType: 0
   explosionVFX: {fileID: 3082295074529929307, guid: 6ad89638ff616f24c8661653fc04e576,
     type: 3}
+  score: 20
+  blastRadius: 0
+  scoreMultiplier: 1

@@ -5,25 +5,76 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
+    //Cache
+    ScoreHandler scoreHandler;
+
+    //References
     [SerializeField] TargetType targetType;
     [SerializeField] GameObject explosionVFX;
 
+    //Parameters
+    [SerializeField] int score = 20;
+    [SerializeField] float blastRadius = 0f;
+    [SerializeField] int scoreMultiplier = 1;
+
+    //State
+    private bool isHit = false;
+
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, blastRadius);
+    }
+
+    void Start() {
+        scoreHandler = FindObjectOfType<ScoreHandler>();
+    }
+
+    //Direct Hit
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player Bullet") {
-            ProcessHit();
+            ProcessHit(scoreMultiplier);
         }
     }
 
-    private void ProcessHit() {
-        //Get type
-        //Do type special abilities
-        //TODO: High-prio: Add score
-        GameObject explosion = Instantiate(
-            explosionVFX,
-            transform.position,
-            Quaternion.identity
-        );
-        Destroy(explosion, 7f);
-        Destroy(gameObject);
+    private void ProcessHit(int scoreMultiplier) {
+        if(!isHit) {
+            isHit = true;
+            if (targetType == TargetType.Exploder) {
+                Explode(scoreMultiplier);
+            }
+            scoreHandler.AddScore(score * scoreMultiplier);
+            GameObject explosion = Instantiate(
+                explosionVFX,
+                transform.position,
+                Quaternion.identity
+            );
+            Destroy(explosion, 2f);
+            Destroy(gameObject);
+        }
+    }
+
+    //Destroy objects around this target
+    private void Explode(int scoreMultiplier) {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, blastRadius);
+        foreach (Collider collider in colliders) {
+            if (collider.gameObject.tag == "Target" && collider.gameObject != gameObject) {
+                Target target = collider.gameObject.GetComponent<Target>();
+                target.TriggerDestroyCoroutine(scoreMultiplier);
+            }
+        }
+    }
+
+    //Chain Reactions
+    public void TriggerDestroyCoroutine(int scoreMultiplier) {
+        StartCoroutine(TriggeredByOtherTarget(scoreMultiplier));
+    }
+
+    IEnumerator TriggeredByOtherTarget(int scoreMultiplier) {
+        float randomDelay = UnityEngine.Random.Range(.2f, .45f);
+        if (targetType == TargetType.Chainer) {
+            Explode(scoreMultiplier);
+        }
+        yield return new WaitForSeconds(randomDelay);
+        ProcessHit(scoreMultiplier);
     }
 }

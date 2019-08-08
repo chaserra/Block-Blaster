@@ -37,14 +37,17 @@ public class CameraMovement : MonoBehaviour {
         var angleModifier = (yAngle <= 180) ? yAngle : -(360 - yAngle);
 
         if (angleModifier > -turretRotationTreshold && angleModifier < turretRotationTreshold) {
+            turretRotationTreshold = 34f;
             RotateCamera(0f, -1f);
         }
 
         if (angleModifier > turretRotationTreshold) {
+            turretRotationTreshold = 30f;
             RotateCamera(cameraRotationAngle, 1f);
         }
 
         if(angleModifier < -turretRotationTreshold) {
+            turretRotationTreshold = 30f;
             RotateCamera(cameraRotationAngle, -1f);
         }
     }
