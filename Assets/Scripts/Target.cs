@@ -33,6 +33,8 @@ public class Target : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player Bullet") {
             ProcessHit(scoreMultiplier);
+        } else if(other.gameObject.tag == "Object Resetter") {
+            Destroy(gameObject);
         }
     }
 
