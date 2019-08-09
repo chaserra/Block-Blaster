@@ -11,7 +11,7 @@ public class ScoreHandler : MonoBehaviour {
     [SerializeField] TextMeshProUGUI comboScoreText;
 
     //Parameters
-    float chainTimer = 3f;
+    [SerializeField] float chainTimer = 3f;
 
     //State
     private int totalScore = 0;

@@ -19,7 +19,7 @@ public class TankBulletProjectile : MonoBehaviour {
                 transform.position, 
                 Quaternion.LookRotation(transform.position - other.transform.position)
             );
-            Destroy(hitEffect, 5f);
+            Destroy(hitEffect, 4f);
             if (hitCounter >= maxNumHit) {
                 Destroy(gameObject);
             }

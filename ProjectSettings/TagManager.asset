@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Player Bullet
   - Target
+  - Environment
+  - Object Resetter
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Player
   - Player Bullet
   - Target
-  - 
+  - Environment
   - 
   - 
   - 

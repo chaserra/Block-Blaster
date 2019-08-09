@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
-  m_LocalPosition: {x: 0, y: 2, z: -3.2}
+  m_LocalRotation: {x: 0.06104851, y: 0, z: 0, w: 0.99813485}
+  m_LocalPosition: {x: 0, y: 1.7, z: -3.2}
   m_LocalScale: {x: 0.5, y: 0.50000024, z: 0.4999999}
   m_Children: []
   m_Father: {fileID: 3648876530435263620}
@@ -356,6 +356,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7737219160762793671}
+  - component: {fileID: 6751427479034408286}
   - component: {fileID: 259362848142974743}
   - component: {fileID: 1289552360887108908}
   m_Layer: 9
@@ -373,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7737219160762793670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -46.5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 3648876530435263620}
@@ -382,6 +383,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6751427479034408286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7737219160762793670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b94f8d9709a88a4f8d435aaf3a7b139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
 --- !u!114 &259362848142974743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +414,7 @@ MonoBehaviour:
   tankBullet: {fileID: 3127945885932912931, guid: 905cf16745a099a4f81beb628c7e7e89,
     type: 3}
   baseRotateClamp: 65
-  gunMaxLookUp: 45
+  gunMaxLookUp: 50
   gunMaxLookDown: 3
   rotateSpeed: 15
   rateOfFire: 0.6
