@@ -10,12 +10,14 @@ public class GameController : MonoBehaviour {
     ScoreHandler scoreHandler;
     GameTimeHandler gameTimeHandler;
     GameOverHandler gameOverHandler;
+    TargetSpawner targetSpawner;
 
     void Start() {
         player = FindObjectOfType<Player>();
         scoreHandler = GetComponent<ScoreHandler>();
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
+        targetSpawner = FindObjectOfType<TargetSpawner>();
     }
 
     public void AddScore(int score) {
@@ -26,6 +28,10 @@ public class GameController : MonoBehaviour {
         player.IsDead();
         scoreHandler.AddFinalScores();
         gameOverHandler.GameOver(scoreHandler.GetTotalScore());
+    }
+
+    public void NextPhase() {
+        targetSpawner.ShiftToNextPhase();
     }
 
 }

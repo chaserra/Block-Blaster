@@ -65,13 +65,13 @@ public class PlayerAiming : MonoBehaviour {
             if(Input.touchCount <= 0) {
                 if (Time.time >= timeToFire) {
                     timeToFire = Time.time + 1 / rateOfFire;
-                    //TODO: Low-prio: Add cooldown bar UI
+                    //TODO: Med-prio: Add cooldown bar UI
                     GameObject bullet = Instantiate(tankBullet, firePoint.transform.position, Quaternion.identity);
                     bullet.transform.localRotation = turretGun.rotation;
                     Destroy(bullet, 8f);
                     //TODO: Med-prio: Add turret retracting animation (for impact visuals)
                 } else {
-                    Debug.Log("Can't fire yet!"); //TODO: Low-prio: Remove comment or add sound effect
+                    Debug.Log("Can't fire yet!"); //TODO: Low-prio: Remove comment, Add sound effect
                 }
                 isTouching = false;
             }

@@ -11,13 +11,17 @@ public class GameTimeHandler : MonoBehaviour {
     [SerializeField] TextMeshProUGUI minutesText;
     [SerializeField] TextMeshProUGUI secondsText;
 
+    //Parameters
+    [SerializeField] private float secondsToShiftPhase = 20f;
+
     //State
     [Tooltip("Timer in seconds.")]
-    [SerializeField] float timeRemaining = 150f;
+    [SerializeField] float timeRemaining = 155f;
     private int hours = 0;
     private int minutes = 0;
     private int seconds = 0;
     private bool hasTimeRemaining = true;
+    private float currentTime = 0;
 
     void Start() {
         gameController = GetComponent<GameController>();
@@ -26,6 +30,7 @@ public class GameTimeHandler : MonoBehaviour {
 
     void Update() {
         TimerCountdown();
+        NextPhaseCheck();
     }
 
     private void TimerCountdown() {
@@ -74,6 +79,15 @@ public class GameTimeHandler : MonoBehaviour {
         if(hasTimeRemaining) {
             hasTimeRemaining = false;
             gameController.TimeOver();
+        }
+    }
+
+    private void NextPhaseCheck() {
+        if(currentTime < secondsToShiftPhase) {
+            currentTime += Time.deltaTime;
+        } else {
+            currentTime = 0;
+            gameController.NextPhase();
         }
     }
 

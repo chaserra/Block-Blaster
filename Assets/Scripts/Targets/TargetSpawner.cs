@@ -10,18 +10,28 @@ public class TargetSpawner : MonoBehaviour {
     [SerializeField] GameObject[] spawnPoints;
 
     //Parameters
-    [Header("Target Spawn Pool")]
-    [SerializeField] GameObject[] initialTargets;
-    [SerializeField] GameObject[] targets;
     [Header("Spawn Parameters")]
     [SerializeField] int initialMaxSpawnLimit = 8;
     [SerializeField] float minSpawnTime = 3f;
     [SerializeField] float maxSpawnTime = 5f;
+    [Header("Target Spawn Pool")]
+    [SerializeField] GameObject[] initialTargets;
+
+    [System.Serializable]
+    private class TargetList {
+        public GameObject[] targetFormation;
+    }
+    [SerializeField] TargetList[] targetList;
 
     //State
     float spawnTime = 5f;
     float timer = 0;
     int spawnCounter = 0;
+    int currentPhase = 0;
+
+    private TargetList GetTargetList(int phase) {
+        return targetList[phase];
+    }
 
     void Start() {
         SpawnInitialTargets();
@@ -66,11 +76,11 @@ public class TargetSpawner : MonoBehaviour {
 
     private void SpawnTargets() {
         int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
-        int randomTargetFormation = Random.Range(0, targets.Length);
-
+        int randomTargetFormation = Random.Range(0, GetTargetList(currentPhase).targetFormation.Length);
+        Debug.Log(targetList.Length);
         Instantiate(
-            targets[randomTargetFormation], 
-            spawnPoints[randomSpawnPoint].transform.position, 
+            GetTargetList(currentPhase).targetFormation[randomTargetFormation],
+            spawnPoints[randomSpawnPoint].transform.position,
             Quaternion.identity,
             spawnPoints[randomSpawnPoint].gameObject.transform
         );
@@ -79,6 +89,15 @@ public class TargetSpawner : MonoBehaviour {
     private void ResetSpawnTime() {
         timer = 0;
         spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
+    }
+
+    //Getters and Setters
+    public void ShiftToNextPhase() {
+        if(currentPhase < targetList.Length - 1) {
+            currentPhase++;
+        } else {
+            currentPhase = targetList.Length - 1;
+        }
     }
 
 }

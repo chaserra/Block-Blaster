@@ -11,18 +11,22 @@ public class ScoreHandler : MonoBehaviour {
     [SerializeField] TextMeshProUGUI comboScoreText;
 
     //Parameters
-    [SerializeField] float chainTimer = 3f;
+    [SerializeField] float chainTimerInitial = 5f;
+    [SerializeField] int comboAdjustTreshold = 100;
 
     //State
     private int totalScore = 0;
     private int scoreMultiplier = 0;
     private int scoreToAdd = 0;
-    private float timer = 3f;
+    private float chainTimer = 0;
+    private float timer = 0; //TODO: Med-prio add timer bar UI
+    private bool comboTimerAdjusted = false;
 
     void Start() {
         scoreText.SetText(totalScore.ToString());
         comboCounterText.SetText(scoreMultiplier.ToString());
         comboScoreText.SetText(scoreToAdd.ToString());
+        chainTimer = chainTimerInitial;
     }
 
 
@@ -42,7 +46,8 @@ public class ScoreHandler : MonoBehaviour {
     }
 
     private void ChainScore() {
-        if(timer < chainTimer) {
+        AdjustChainTimer();
+        if (timer < chainTimer) {
             timer += Time.deltaTime;
             comboScoreText.SetText(scoreToAdd.ToString());
             comboCounterText.SetText(scoreMultiplier.ToString());
@@ -50,8 +55,17 @@ public class ScoreHandler : MonoBehaviour {
             totalScore += scoreToAdd * scoreMultiplier;
             scoreMultiplier = 0;
             scoreToAdd = 0;
+            comboTimerAdjusted = false;
+            chainTimer = chainTimerInitial;
             comboScoreText.SetText(scoreToAdd.ToString());
             scoreText.SetText(totalScore.ToString());
+        }
+    }
+
+    private void AdjustChainTimer() {
+        if (scoreMultiplier > comboAdjustTreshold && !comboTimerAdjusted) {
+            comboTimerAdjusted = true;
+            chainTimer -= 2;
         }
     }
 
