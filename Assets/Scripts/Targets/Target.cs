@@ -6,7 +6,7 @@ using UnityEngine;
 public class Target : MonoBehaviour {
 
     //Cache
-    ScoreHandler scoreHandler;
+    GameController gameController;
 
     //References
     [SerializeField] TargetType targetType;
@@ -26,7 +26,7 @@ public class Target : MonoBehaviour {
     }
 
     void Start() {
-        scoreHandler = FindObjectOfType<ScoreHandler>();
+        gameController = FindObjectOfType<GameController>();
     }
 
     //Direct Hit
@@ -44,7 +44,7 @@ public class Target : MonoBehaviour {
             if (targetType == TargetType.Exploder) {
                 Explode(scoreMultiplier);
             }
-            scoreHandler.AddScore(score * scoreMultiplier);
+            gameController.AddScore(score * scoreMultiplier);
             GameObject explosion = Instantiate(
                 explosionVFX,
                 transform.position,

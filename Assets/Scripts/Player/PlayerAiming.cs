@@ -7,6 +7,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerAiming : MonoBehaviour {
 
     //Cache
+    private Player player;
     [Header("Object References")]
     [SerializeField] Transform turretBase;
     [SerializeField] Transform turretGun;
@@ -29,12 +30,14 @@ public class PlayerAiming : MonoBehaviour {
     private bool isTouching = false;
 
     void Start() {
-        
+        player = GetComponent<Player>();
     }
 
 
     void Update() {
-        RotateAndShoot();
+        if(player.IsAlive()) {
+            RotateAndShoot();
+        }
     }
 
     private void RotateAndShoot() {

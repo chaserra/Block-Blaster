@@ -55,9 +55,18 @@ public class ScoreHandler : MonoBehaviour {
         }
     }
 
+    //Getters and Setters
     public void AddScore(int score) {
         timer = 0f;
         scoreMultiplier++;
         scoreToAdd += score;
+    }
+
+    public void AddFinalScores() {
+        totalScore += scoreToAdd * scoreMultiplier;
+    }
+
+    public int GetTotalScore() {
+        return totalScore;
     }
 }
