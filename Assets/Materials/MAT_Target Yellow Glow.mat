@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Yellow Emissive
+  m_Name: MAT_Target Yellow Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.82176596, g: 0.8396226, b: 0.20198467, a: 1}
-    - _EmissionColor: {r: 1.4534307, g: 1.5508673, b: 0.41410595, a: 1}
+    - _Color: {r: 0.97530866, g: 1, b: 0, a: 1}
+    - _EmissionColor: {r: 2.421685, g: 2.6390157, b: 0, a: 1}

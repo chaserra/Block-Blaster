@@ -954,8 +954,7 @@ MonoBehaviour:
   comboCounterText: {fileID: 1077493469}
   comboScoreText: {fileID: 802412371}
   chainTimerInitial: 5
-  chainTimer: 5
-  timer: 0
+  comboAdjustTreshold: 100
 --- !u!114 &426839890
 MonoBehaviour:
   m_ObjectHideFlags: 0

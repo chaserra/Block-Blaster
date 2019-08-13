@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3419821765580215303
+--- !u!1001 &6322432155046589488
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,37 +10,37 @@ PrefabInstance:
     - target: {fileID: 3763226222621723878, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_Name
-      value: Exploder Target Variant
+      value: Chainer Target Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3763226222621723898, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
@@ -71,7 +71,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 82096aab38f01cb40a1cbf8629a810ba, type: 2}
+      objectReference: {fileID: 2100000, guid: bb6f5fcbfb989da4ea61ec0b4e6454c5, type: 2}
+    - target: {fileID: 7249971415724884364, guid: 63548dc232e92cf45be737af61d155b6,
+        type: 3}
+      propertyPath: targetType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7249971415724884364, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: blastRadius
@@ -79,18 +84,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7249971415724884364, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
-      propertyPath: targetType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7249971415724884364, guid: 63548dc232e92cf45be737af61d155b6,
-        type: 3}
       propertyPath: score
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7249971415724884364, guid: 63548dc232e92cf45be737af61d155b6,
         type: 3}
       propertyPath: scoreMultiplier
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63548dc232e92cf45be737af61d155b6, type: 3}

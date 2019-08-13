@@ -8,7 +8,7 @@ public class ObjectMover : MonoBehaviour {
     Rigidbody rb;
 
     //Parameters
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 5f;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -22,6 +22,10 @@ public class ObjectMover : MonoBehaviour {
     private void MoveObject() {
         Vector3 moveObject = new Vector3(0, 0, -moveSpeed);
         rb.AddForce(moveObject, ForceMode.Impulse);
+    }
+
+    public void SetTargetMovementSpeed(float speedToAdd) {
+        moveSpeed += speedToAdd;
     }
 
 }

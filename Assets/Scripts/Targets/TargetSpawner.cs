@@ -11,6 +11,7 @@ public class TargetSpawner : MonoBehaviour {
 
     //Parameters
     [Header("Spawn Parameters")]
+    [SerializeField] float moveSpeedModifier = .5f;
     [SerializeField] int initialMaxSpawnLimit = 8;
     [SerializeField] float minSpawnTime = 3f;
     [SerializeField] float maxSpawnTime = 5f;
@@ -25,9 +26,10 @@ public class TargetSpawner : MonoBehaviour {
 
     //State
     float spawnTime = 5f;
-    float timer = 0;
+    float timer = 0f;
     int spawnCounter = 0;
     int currentPhase = 0;
+    float addToTargetMoveSpeed = 0f;
 
     private TargetList GetTargetList(int phase) {
         return targetList[phase];
@@ -78,12 +80,16 @@ public class TargetSpawner : MonoBehaviour {
         int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
         int randomTargetFormation = Random.Range(0, GetTargetList(currentPhase).targetFormation.Length);
         Debug.Log(targetList.Length);
-        Instantiate(
+        GameObject targetFormation = Instantiate(
             GetTargetList(currentPhase).targetFormation[randomTargetFormation],
             spawnPoints[randomSpawnPoint].transform.position,
             Quaternion.identity,
             spawnPoints[randomSpawnPoint].gameObject.transform
         );
+        ObjectMover[] spawnedObjectMovers = targetFormation.GetComponentsInChildren<ObjectMover>();
+        for(int x = 0; x < spawnedObjectMovers.Length; x++) {
+            spawnedObjectMovers[x].SetTargetMovementSpeed(addToTargetMoveSpeed);
+        }
     }
 
     private void ResetSpawnTime() {
@@ -95,7 +101,9 @@ public class TargetSpawner : MonoBehaviour {
     public void ShiftToNextPhase() {
         if(currentPhase < targetList.Length - 1) {
             currentPhase++;
+            addToTargetMoveSpeed += moveSpeedModifier;
         } else {
+            addToTargetMoveSpeed += moveSpeedModifier;
             currentPhase = targetList.Length - 1;
         }
     }
