@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour {
     GameOverHandler gameOverHandler;
     TargetSpawner targetSpawner;
 
+    //Parameters
+    [SerializeField] float bonusTime = 10f;
+
     void Start() {
         player = FindObjectOfType<Player>();
         scoreHandler = GetComponent<ScoreHandler>();
@@ -27,11 +30,15 @@ public class GameController : MonoBehaviour {
     public void TimeOver() {
         player.IsDead();
         scoreHandler.AddFinalScores();
-        gameOverHandler.GameOver(scoreHandler.GetTotalScore());
+        gameOverHandler.GameOver(scoreHandler.GetTotalScore(), scoreHandler.GetHighestComboAchieved());
     }
 
     public void NextPhase() {
         targetSpawner.ShiftToNextPhase();
+    }
+
+    public void AddTimer() {
+        gameTimeHandler.AddTime(bonusTime);
     }
 
 }

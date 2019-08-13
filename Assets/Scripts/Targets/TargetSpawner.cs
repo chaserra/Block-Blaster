@@ -15,6 +15,7 @@ public class TargetSpawner : MonoBehaviour {
     [SerializeField] int initialMaxSpawnLimit = 8;
     [SerializeField] float minSpawnTime = 3f;
     [SerializeField] float maxSpawnTime = 5f;
+    [SerializeField] float spawnTimeModifier = .2f;
     [Header("Target Spawn Pool")]
     [SerializeField] GameObject[] initialTargets;
 
@@ -25,6 +26,8 @@ public class TargetSpawner : MonoBehaviour {
     [SerializeField] TargetList[] targetList;
 
     //State
+    float initialMinSpawnTime;
+    float initialMaxSpawnTime;
     float spawnTime = 5f;
     float timer = 0f;
     int spawnCounter = 0;
@@ -36,6 +39,8 @@ public class TargetSpawner : MonoBehaviour {
     }
 
     void Start() {
+        initialMinSpawnTime = minSpawnTime;
+        initialMaxSpawnTime = maxSpawnTime;
         SpawnInitialTargets();
         ResetSpawnTime();
     }
@@ -79,7 +84,6 @@ public class TargetSpawner : MonoBehaviour {
     private void SpawnTargets() {
         int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
         int randomTargetFormation = Random.Range(0, GetTargetList(currentPhase).targetFormation.Length);
-        Debug.Log(targetList.Length);
         GameObject targetFormation = Instantiate(
             GetTargetList(currentPhase).targetFormation[randomTargetFormation],
             spawnPoints[randomSpawnPoint].transform.position,
@@ -101,11 +105,18 @@ public class TargetSpawner : MonoBehaviour {
     public void ShiftToNextPhase() {
         if(currentPhase < targetList.Length - 1) {
             currentPhase++;
-            addToTargetMoveSpeed += moveSpeedModifier;
+            AdjustSpeedModifiers();
         } else {
-            addToTargetMoveSpeed += moveSpeedModifier;
             currentPhase = targetList.Length - 1;
+            AdjustSpeedModifiers();
         }
     }
 
+    private void AdjustSpeedModifiers() {
+        addToTargetMoveSpeed += moveSpeedModifier;
+        if (minSpawnTime > initialMinSpawnTime - 1.5f || maxSpawnTime > initialMaxSpawnTime - 1.5f) {
+            minSpawnTime -= spawnTimeModifier;
+            maxSpawnTime -= spawnTimeModifier;
+        }
+    }
 }

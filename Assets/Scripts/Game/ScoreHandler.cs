@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class ScoreHandler : MonoBehaviour {
+
+    //Cache
+    GameController gameController;
 
     //References
     [SerializeField] TextMeshProUGUI scoreText;
@@ -13,26 +17,37 @@ public class ScoreHandler : MonoBehaviour {
     //Parameters
     [SerializeField] float chainTimerInitial = 5f;
     [SerializeField] int comboAdjustTreshold = 100;
+    [SerializeField] int timeAdjustComboNeededInitial = 100;
 
     //State
     private int totalScore = 0;
-    private int scoreMultiplier = 0;
+    private int comboMultiplier = 0;
     private int scoreToAdd = 0;
-    private float chainTimer = 0;
+
+    private float comboTimer = 0;
     private float timer = 0; //TODO: Med-prio add timer bar UI
     private bool comboTimerAdjusted = false;
 
+    private int timeAdjustComboNeeded = 0;
+    private bool timeAdjusted = false;
+
+    private int highestComboAchieved = 0;
+
     void Start() {
+        gameController = GetComponent<GameController>();
         scoreText.SetText(totalScore.ToString());
-        comboCounterText.SetText(scoreMultiplier.ToString());
+        comboCounterText.SetText(comboMultiplier.ToString());
         comboScoreText.SetText(scoreToAdd.ToString());
-        chainTimer = chainTimerInitial;
+        comboTimer = chainTimerInitial;
+        timeAdjustComboNeeded = timeAdjustComboNeededInitial;
     }
 
 
     void Update() {
         DisplayComboText();
         ChainScore();
+        CheckForBonusTime();
+        CheckHighestComboAchieved();
     }
 
     private void DisplayComboText() {
@@ -47,40 +62,61 @@ public class ScoreHandler : MonoBehaviour {
 
     private void ChainScore() {
         AdjustChainTimer();
-        if (timer < chainTimer) {
+        if (timer < comboTimer) {
             timer += Time.deltaTime;
             comboScoreText.SetText(scoreToAdd.ToString());
-            comboCounterText.SetText(scoreMultiplier.ToString());
+            comboCounterText.SetText(comboMultiplier.ToString());
         } else {
-            totalScore += scoreToAdd * scoreMultiplier;
-            scoreMultiplier = 0;
+            totalScore += scoreToAdd * comboMultiplier;
+            comboMultiplier = 0;
             scoreToAdd = 0;
             comboTimerAdjusted = false;
-            chainTimer = chainTimerInitial;
+            comboTimer = chainTimerInitial;
+            timeAdjusted = false;
+            timeAdjustComboNeeded = timeAdjustComboNeededInitial;
             comboScoreText.SetText(scoreToAdd.ToString());
             scoreText.SetText(totalScore.ToString());
         }
     }
 
     private void AdjustChainTimer() {
-        if (scoreMultiplier > comboAdjustTreshold && !comboTimerAdjusted) {
+        if (comboMultiplier > comboAdjustTreshold && !comboTimerAdjusted) {
             comboTimerAdjusted = true;
-            chainTimer -= 2;
+            comboTimer -= 2;
+        }
+    }
+
+    private void CheckForBonusTime() {
+        if(comboMultiplier >= timeAdjustComboNeeded && !timeAdjusted) {
+            timeAdjusted = true; //Failsafe. Prevents double time adding.
+            gameController.AddTimer();
+            timeAdjustComboNeeded += 50;
+            timeAdjusted = false; //Failsafe. Prevents double time adding.
+        }
+    }
+
+    private void CheckHighestComboAchieved() {
+        if(comboMultiplier > highestComboAchieved) {
+            highestComboAchieved = comboMultiplier;
         }
     }
 
     //Getters and Setters
     public void AddScore(int score) {
         timer = 0f;
-        scoreMultiplier++;
+        comboMultiplier++;
         scoreToAdd += score;
     }
 
     public void AddFinalScores() {
-        totalScore += scoreToAdd * scoreMultiplier;
+        totalScore += scoreToAdd * comboMultiplier;
     }
 
     public int GetTotalScore() {
         return totalScore;
+    }
+
+    public int GetHighestComboAchieved() {
+        return highestComboAchieved;
     }
 }

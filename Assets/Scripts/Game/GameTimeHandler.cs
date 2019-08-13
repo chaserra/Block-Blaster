@@ -91,4 +91,8 @@ public class GameTimeHandler : MonoBehaviour {
         }
     }
 
+    public void AddTime(float timeToAdd) {
+        timeRemaining += timeToAdd;
+    }
+
 }
