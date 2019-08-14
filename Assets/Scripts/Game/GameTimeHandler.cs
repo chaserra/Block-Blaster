@@ -92,6 +92,7 @@ public class GameTimeHandler : MonoBehaviour {
     }
 
     public void AddTime(float timeToAdd) {
+        //TODO: High: Display a "+ <timeToAdd>s" text below the timer
         timeRemaining += timeToAdd;
     }
 

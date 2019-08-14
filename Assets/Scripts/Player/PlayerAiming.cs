@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerAiming : MonoBehaviour {
@@ -13,6 +14,7 @@ public class PlayerAiming : MonoBehaviour {
     [SerializeField] Transform turretGun;
     [SerializeField] GameObject firePoint;
     [SerializeField] GameObject tankBullet;
+    [SerializeField] Image reloadingHUD;
 
     //Parameters
     [Header("Clamp Rotation")]

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 
@@ -13,11 +14,12 @@ public class ScoreHandler : MonoBehaviour {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI comboCounterText;
     [SerializeField] TextMeshProUGUI comboScoreText;
+    [SerializeField] Image comboTimerUI;
 
     //Parameters
     [SerializeField] float chainTimerInitial = 5f;
     [SerializeField] int comboAdjustTreshold = 100;
-    [SerializeField] int timeAdjustComboNeededInitial = 100;
+    [SerializeField] int timeAdjustComboNeededInitial = 50;
 
     //State
     private int totalScore = 0;
@@ -25,7 +27,7 @@ public class ScoreHandler : MonoBehaviour {
     private int scoreToAdd = 0;
 
     private float comboTimer = 0;
-    private float timer = 0; //TODO: Med-prio add timer bar UI
+    private float timer = 0;
     private bool comboTimerAdjusted = false;
 
     private int timeAdjustComboNeeded = 0;
@@ -39,6 +41,7 @@ public class ScoreHandler : MonoBehaviour {
         comboCounterText.SetText(comboMultiplier.ToString());
         comboScoreText.SetText(scoreToAdd.ToString());
         comboTimer = chainTimerInitial;
+        timer = comboTimer;
         timeAdjustComboNeeded = timeAdjustComboNeededInitial;
     }
 
@@ -66,14 +69,18 @@ public class ScoreHandler : MonoBehaviour {
             timer += Time.deltaTime;
             comboScoreText.SetText(scoreToAdd.ToString());
             comboCounterText.SetText(comboMultiplier.ToString());
+            comboTimerUI.gameObject.transform.parent.gameObject.SetActive(true);
+            comboTimerUI.fillAmount = timer / comboTimer;
         } else {
             totalScore += scoreToAdd * comboMultiplier;
             comboMultiplier = 0;
             scoreToAdd = 0;
             comboTimerAdjusted = false;
             comboTimer = chainTimerInitial;
+            timer = comboTimer;
             timeAdjusted = false;
             timeAdjustComboNeeded = timeAdjustComboNeededInitial;
+            comboTimerUI.gameObject.transform.parent.gameObject.SetActive(false);
             comboScoreText.SetText(scoreToAdd.ToString());
             scoreText.SetText(totalScore.ToString());
         }
@@ -82,7 +89,7 @@ public class ScoreHandler : MonoBehaviour {
     private void AdjustChainTimer() {
         if (comboMultiplier > comboAdjustTreshold && !comboTimerAdjusted) {
             comboTimerAdjusted = true;
-            comboTimer -= 2;
+            comboTimer -= 1f;
         }
     }
 
@@ -91,7 +98,7 @@ public class ScoreHandler : MonoBehaviour {
             timeAdjusted = true; //Failsafe. Prevents double time adding.
             gameController.AddTimer();
             timeAdjustComboNeeded += 50;
-            timeAdjusted = false; //Failsafe. Prevents double time adding.
+            timeAdjusted = false; //Failsafe exit. Prevents double time adding.
         }
     }
 
