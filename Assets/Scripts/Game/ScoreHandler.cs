@@ -9,6 +9,7 @@ public class ScoreHandler : MonoBehaviour {
 
     //Cache
     GameController gameController;
+    Image comboTimerBG;
 
     //References
     [SerializeField] TextMeshProUGUI scoreText;
@@ -37,6 +38,7 @@ public class ScoreHandler : MonoBehaviour {
 
     void Start() {
         gameController = GetComponent<GameController>();
+        comboTimerBG = comboTimerUI.gameObject.transform.parent.gameObject.GetComponent<Image>();
         scoreText.SetText(totalScore.ToString());
         comboCounterText.SetText(comboMultiplier.ToString());
         comboScoreText.SetText(scoreToAdd.ToString());
@@ -71,6 +73,14 @@ public class ScoreHandler : MonoBehaviour {
             comboCounterText.SetText(comboMultiplier.ToString());
             comboTimerUI.gameObject.transform.parent.gameObject.SetActive(true);
             comboTimerUI.fillAmount = timer / comboTimer;
+            if (comboTimerUI.fillAmount > .75f) {
+                comboTimerBG.color = Color.red;
+            } else if (comboTimerUI.fillAmount >= .4f) {
+                comboTimerBG.color = Color.yellow;
+            } else if (comboTimerUI.fillAmount < .4f) {
+                comboTimerBG.color = Color.green;
+            }
+
         } else {
             totalScore += scoreToAdd * comboMultiplier;
             comboMultiplier = 0;
@@ -82,7 +92,7 @@ public class ScoreHandler : MonoBehaviour {
             timeAdjustComboNeeded = timeAdjustComboNeededInitial;
             comboTimerUI.gameObject.transform.parent.gameObject.SetActive(false);
             comboScoreText.SetText(scoreToAdd.ToString());
-            scoreText.SetText(totalScore.ToString());
+            scoreText.SetText(totalScore.ToString("n0"));
         }
     }
 

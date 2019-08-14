@@ -24,11 +24,11 @@ public class PlayerAiming : MonoBehaviour {
 
     [Header("Config")]
     [SerializeField] float rotateSpeed = 15f;
-    [Tooltip("Higher value means faster cooldown.")]
-    [SerializeField] float rateOfFire = .6f;
+    [SerializeField] float rateOfFire = 1f;
 
     //State
     private float timeToFire = 0;
+    private bool hasReloaded = true;
     private bool isTouching = false;
 
     void Start() {
@@ -39,6 +39,7 @@ public class PlayerAiming : MonoBehaviour {
     void Update() {
         if(player.IsAlive()) {
             RotateAndShoot();
+            Reload();
         }
     }
 
@@ -65,12 +66,12 @@ public class PlayerAiming : MonoBehaviour {
 
         if(CrossPlatformInputManager.GetButtonUp("Fire1") || isTouching) {
             if(Input.touchCount <= 0) {
-                if (Time.time >= timeToFire) {
-                    timeToFire = Time.time + 1 / rateOfFire;
-                    //TODO: Med-prio: Add cooldown bar UI
+                if (hasReloaded) {
                     GameObject bullet = Instantiate(tankBullet, firePoint.transform.position, Quaternion.identity);
                     bullet.transform.localRotation = turretGun.rotation;
                     Destroy(bullet, 8f);
+                    hasReloaded = false;
+                    timeToFire = 0;
                     //TODO: Med-prio: Add turret retracting animation (for impact visuals)
                 } else {
                     Debug.Log("Can't fire yet!"); //TODO: Low-prio: Remove comment, Add sound effect
@@ -79,4 +80,23 @@ public class PlayerAiming : MonoBehaviour {
             }
         }
     }
+
+    private void Reload() {
+        if(timeToFire < rateOfFire) {
+            timeToFire += Time.deltaTime;
+            reloadingHUD.gameObject.transform.parent.gameObject.SetActive(true);
+            reloadingHUD.fillAmount = timeToFire / rateOfFire;
+            if(reloadingHUD.fillAmount < .5f) {
+                reloadingHUD.color = Color.red;
+            } else if(reloadingHUD.fillAmount < .75f) {
+                reloadingHUD.color = Color.yellow;
+            } else if (reloadingHUD.fillAmount < .95f) {
+                reloadingHUD.color = Color.green;
+            }
+        } else {
+            hasReloaded = true;
+            reloadingHUD.gameObject.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
 }

@@ -18,8 +18,8 @@ public class GameOverHandler : MonoBehaviour {
     public void GameOver(int totalScore, int highestCombo) {
         mainGameCanvas.enabled = false;
         gameOverCanvas.enabled = true;
-        totalScoreText.SetText(totalScore.ToString());
-        highestComboText.SetText(highestCombo.ToString());
+        totalScoreText.SetText(totalScore.ToString("n0"));
+        highestComboText.SetText(highestCombo.ToString("n0"));
         Time.timeScale = 0;
 
         Cursor.lockState = CursorLockMode.None;

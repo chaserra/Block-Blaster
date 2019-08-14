@@ -114,7 +114,7 @@ public class TargetSpawner : MonoBehaviour {
 
     private void AdjustSpeedModifiers() {
         addToTargetMoveSpeed += moveSpeedModifier;
-        if (minSpawnTime > initialMinSpawnTime - 1.5f || maxSpawnTime > initialMaxSpawnTime - 1.5f) {
+        if (minSpawnTime > initialMinSpawnTime - 1.6f || maxSpawnTime > initialMaxSpawnTime - 1.6f) {
             minSpawnTime -= spawnTimeModifier;
             maxSpawnTime -= spawnTimeModifier;
         }

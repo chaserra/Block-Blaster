@@ -10,6 +10,7 @@ public class GameTimeHandler : MonoBehaviour {
     [SerializeField] TextMeshProUGUI hoursText;
     [SerializeField] TextMeshProUGUI minutesText;
     [SerializeField] TextMeshProUGUI secondsText;
+    [SerializeField] TextMeshProUGUI bonusTimeText;
 
     //Parameters
     [SerializeField] private float secondsToShiftPhase = 20f;
@@ -25,6 +26,7 @@ public class GameTimeHandler : MonoBehaviour {
 
     void Start() {
         gameController = GetComponent<GameController>();
+        bonusTimeText.gameObject.SetActive(false);
     }
 
 
@@ -92,8 +94,16 @@ public class GameTimeHandler : MonoBehaviour {
     }
 
     public void AddTime(float timeToAdd) {
-        //TODO: High: Display a "+ <timeToAdd>s" text below the timer
+        string timeText = timeToAdd.ToString();
+        StartCoroutine(DisplayBonusTimeText(timeText));
         timeRemaining += timeToAdd;
+    }
+
+    IEnumerator DisplayBonusTimeText(string time) {
+        bonusTimeText.gameObject.SetActive(true);
+        bonusTimeText.SetText("+" + time + "s");
+        yield return new WaitForSeconds(2f);
+        bonusTimeText.gameObject.SetActive(false);
     }
 
 }
