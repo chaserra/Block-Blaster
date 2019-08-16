@@ -27,12 +27,16 @@ public class GameTimeHandler : MonoBehaviour {
     void Start() {
         gameController = GetComponent<GameController>();
         bonusTimeText.gameObject.SetActive(false);
+        hoursText.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
 
     void Update() {
-        TimerCountdown();
-        NextPhaseCheck();
+        if(gameController.GameHasStarted()) {
+            hoursText.gameObject.transform.parent.gameObject.SetActive(true);
+            TimerCountdown();
+            NextPhaseCheck();
+        }
     }
 
     private void TimerCountdown() {

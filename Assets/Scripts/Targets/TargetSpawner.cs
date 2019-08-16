@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TargetSpawner : MonoBehaviour {
 
+    //Cache
+    GameController gameController;
+
     //Object References
     [Header("Spawn Points")]
     [SerializeField] GameObject initialSpawn;
@@ -26,6 +29,7 @@ public class TargetSpawner : MonoBehaviour {
     [SerializeField] TargetList[] targetList;
 
     //State
+    bool triggeredOnce = false;
     float initialMinSpawnTime;
     float initialMaxSpawnTime;
     float spawnTime = 5f;
@@ -39,19 +43,24 @@ public class TargetSpawner : MonoBehaviour {
     }
 
     void Start() {
+        gameController = FindObjectOfType<GameController>();
         initialMinSpawnTime = minSpawnTime;
         initialMaxSpawnTime = maxSpawnTime;
-        SpawnInitialTargets();
-        ResetSpawnTime();
     }
 
 
     void Update() {
-        if(timer < spawnTime) {
-            timer += Time.deltaTime;
-        } else {
-            SpawnTargets();
-            ResetSpawnTime();
+        if (gameController.GameHasStarted()) {
+            if(!triggeredOnce) {
+                SpawnInitialTargets();
+                ResetSpawnTime();
+            }
+            if (timer < spawnTime) {
+                timer += Time.deltaTime;
+            } else {
+                SpawnTargets();
+                ResetSpawnTime();
+            }
         }
     }
 
@@ -79,6 +88,8 @@ public class TargetSpawner : MonoBehaviour {
         if(spawnCounter < initialMaxSpawnLimit) {
             SpawnInitialTargets();
         }
+
+        triggeredOnce = true;
     }
 
     private void SpawnTargets() {

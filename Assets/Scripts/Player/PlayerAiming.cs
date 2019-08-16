@@ -9,6 +9,7 @@ public class PlayerAiming : MonoBehaviour {
 
     //Cache
     private Player player;
+    GameController gameController;
     [Header("Object References")]
     [SerializeField] Transform turretBase;
     [SerializeField] Transform turretGun;
@@ -33,11 +34,13 @@ public class PlayerAiming : MonoBehaviour {
 
     void Start() {
         player = GetComponent<Player>();
+        gameController = FindObjectOfType<GameController>();
+        timeToFire = rateOfFire;
     }
 
 
     void Update() {
-        if(player.IsAlive()) {
+        if(player.IsAlive() && !gameController.IsGamePaused()) {
             RotateAndShoot();
             Reload();
         }

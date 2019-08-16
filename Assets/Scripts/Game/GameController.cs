@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameController : MonoBehaviour {
@@ -13,7 +14,13 @@ public class GameController : MonoBehaviour {
     TargetSpawner targetSpawner;
 
     //Parameters
+    [SerializeField] Button pauseButton;
+    [SerializeField] Canvas pauseCanvas;
     [SerializeField] float bonusTime = 10f;
+
+    //State
+    private bool gameStarted = false;
+    private bool gamePaused = false;
 
     void Start() {
         player = FindObjectOfType<Player>();
@@ -21,6 +28,42 @@ public class GameController : MonoBehaviour {
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
+        pauseButton.gameObject.SetActive(false);
+    }
+
+    public void PauseGame() {
+        if(gamePaused) {
+            //Unpause
+            Time.timeScale = 1f;
+            StartCoroutine(UnpauseGame());
+        } else {
+            //Pause
+            pauseCanvas.gameObject.SetActive(true);
+            pauseButton.gameObject.SetActive(false);
+            gamePaused = true;
+            Time.timeScale = 0f;
+        }
+    }
+
+    IEnumerator UnpauseGame() {
+        pauseButton.gameObject.SetActive(true);
+        pauseCanvas.gameObject.SetActive(false);
+        yield return new WaitForSeconds(.2f);
+        gamePaused = false;
+    }
+
+    public void StartGame() {
+        pauseButton.gameObject.SetActive(true);
+        StartCoroutine(StartGameWithDelay());
+    }
+
+    IEnumerator StartGameWithDelay() {
+        yield return new WaitForSeconds(3f);
+        gameStarted = true;
+    }
+
+    public bool GameHasStarted() {
+        return gameStarted;
     }
 
     public void AddScore(int score) {
@@ -39,6 +82,10 @@ public class GameController : MonoBehaviour {
 
     public void AddTimer() {
         gameTimeHandler.AddTime(bonusTime);
+    }
+
+    public bool IsGamePaused() {
+        return gamePaused;
     }
 
 }
