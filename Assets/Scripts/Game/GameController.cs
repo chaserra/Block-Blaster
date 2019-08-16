@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
+        pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
     }
 

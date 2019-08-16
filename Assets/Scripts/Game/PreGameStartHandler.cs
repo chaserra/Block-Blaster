@@ -12,6 +12,11 @@ public class PreGameStartHandler : MonoBehaviour {
     //Object References
     [SerializeField] TextMeshProUGUI dragText;
     [SerializeField] TextMeshProUGUI releaseText;
+    [SerializeField] TextMeshProUGUI highScoreField; //TODO: High: display highest score achieved
+    [SerializeField] TextMeshProUGUI bestComboField; //TODO: High: display highest combo achieved
+
+    //Parameters
+    float animSpeedInSec = 1f;
 
     //State
     private bool hasStarted = false;
@@ -19,7 +24,7 @@ public class PreGameStartHandler : MonoBehaviour {
 
     void Start() {
         gameController = GetComponent<GameController>();
-        releaseText.gameObject.SetActive(false);
+        //releaseText.gameObject.SetActive(false);
     }
 
 
@@ -33,16 +38,33 @@ public class PreGameStartHandler : MonoBehaviour {
                 if (Input.touchCount > 0) {
                     isTouching = true;
                 }
-                dragText.gameObject.SetActive(false);
-                releaseText.gameObject.SetActive(true);
+                StartCoroutine(TextFade(dragText, 0));
+                StartCoroutine(TextFade(releaseText, 1));
             }
 
             if (CrossPlatformInputManager.GetButtonUp("Fire1") || isTouching) {
                 gameController.StartGame();
-                releaseText.gameObject.SetActive(false);
+                StartCoroutine(TextFade(releaseText, 0));
                 hasStarted = true;
             }
         }
+    }
+
+    IEnumerator TextFade(TextMeshProUGUI text, float alphaValue) {
+        Color currentColor = text.color;
+        Color colorAlpha = text.color;
+        colorAlpha.a = alphaValue;
+
+        float oldAnimSpeedInSec = animSpeedInSec;
+        float counter = 0;
+
+        while (counter < oldAnimSpeedInSec) {
+            counter += Time.deltaTime;
+            text.color = Color.Lerp(currentColor, colorAlpha, counter / oldAnimSpeedInSec);
+            yield return null;
+        }
+        text.color = colorAlpha;
+        yield return null;
     }
 
 }

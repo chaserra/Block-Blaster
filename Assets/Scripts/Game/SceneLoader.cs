@@ -11,8 +11,8 @@ public class SceneLoader : MonoBehaviour {
     }
 
     public void MainMenu() {
-        Time.timeScale = 1;
         //TODO: HIGH: Load Main Menu scene OR high scores if main menu is removed from the game
+        //Time.timeScale = 1;
     }
 
     public void QuitGame() {

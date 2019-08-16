@@ -22,6 +22,7 @@ public class GameOverHandler : MonoBehaviour {
         highestComboText.SetText(highestCombo.ToString("n0"));
         Time.timeScale = 0;
 
+        //PC ONLY
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
