@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Environment
   - Object Resetter
+  - VFX
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,8 @@ public class TankBulletProjectile : MonoBehaviour {
             GameObject hitEffect = Instantiate(
                 hitVFX, 
                 transform.position, 
-                Quaternion.LookRotation(transform.position - other.transform.position)
+                Quaternion.LookRotation(transform.position - other.transform.position),
+                GameObject.FindGameObjectWithTag("VFX").transform
             );
             Destroy(hitEffect, 4f);
             if (hitCounter >= maxNumHit) {

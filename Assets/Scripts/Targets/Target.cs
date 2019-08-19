@@ -48,7 +48,8 @@ public class Target : MonoBehaviour {
             GameObject explosion = Instantiate(
                 explosionVFX,
                 transform.position,
-                Quaternion.identity
+                Quaternion.identity,
+                GameObject.FindGameObjectWithTag("VFX").transform
             );
             Destroy(explosion, 2f);
             Destroy(gameObject);

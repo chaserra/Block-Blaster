@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     TargetSpawner targetSpawner;
 
     //Parameters
+    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] Button pauseButton;
     [SerializeField] Canvas pauseCanvas;
     [SerializeField] float bonusTime = 10f;
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour {
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
+        scoreText.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
     }
@@ -59,6 +61,7 @@ public class GameController : MonoBehaviour {
     }
 
     IEnumerator StartGameWithDelay() {
+        scoreText.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         gameStarted = true;
     }
