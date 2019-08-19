@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityStandardAssets.CrossPlatformInput;
 using TMPro;
 
@@ -12,8 +13,8 @@ public class PreGameStartHandler : MonoBehaviour {
     //Object References
     [SerializeField] TextMeshProUGUI dragText;
     [SerializeField] TextMeshProUGUI releaseText;
-    [SerializeField] TextMeshProUGUI highScoreField; //TODO: High: display highest score achieved
-    [SerializeField] TextMeshProUGUI bestComboField; //TODO: High: display highest combo achieved
+    [SerializeField] TextMeshProUGUI highScoreField; //TODO: High: display on separate canvas
+    [SerializeField] TextMeshProUGUI bestComboField; //TODO: High: display on separate canvas
 
     //Parameters
     float animSpeedInSec = 1f;
@@ -33,7 +34,7 @@ public class PreGameStartHandler : MonoBehaviour {
     }
 
     private void StartInstructions() {
-        if(!hasStarted) {
+        if(!hasStarted && EventSystem.current.currentSelectedGameObject == null) {
             if (CrossPlatformInputManager.GetButtonDown("Fire1") || Input.touchCount > 0) {
                 if (Input.touchCount > 0) {
                     isTouching = true;

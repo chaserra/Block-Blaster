@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class CameraMovement : MonoBehaviour {
@@ -30,8 +31,10 @@ public class CameraMovement : MonoBehaviour {
     }
 
     void Update() {
-        CheckAngleAndRotate();
-        PanCamera();
+        if(EventSystem.current.currentSelectedGameObject == null) {
+            CheckAngleAndRotate();
+            PanCamera();
+        }
     }
 
     private void CheckAngleAndRotate() {

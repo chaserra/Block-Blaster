@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     TargetSpawner targetSpawner;
 
     //Parameters
+    [SerializeField] Canvas preStartScreenCanvas;
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] Button pauseButton;
     [SerializeField] Canvas pauseCanvas;
@@ -38,7 +39,10 @@ public class GameController : MonoBehaviour {
         if(gamePaused) {
             //Unpause
             Time.timeScale = 1f;
-            StartCoroutine(UnpauseGame());
+            //StartCoroutine(UnpauseGame());
+            pauseButton.gameObject.SetActive(true);
+            pauseCanvas.gameObject.SetActive(false);
+            gamePaused = false;
         } else {
             //Pause
             pauseCanvas.gameObject.SetActive(true);
@@ -48,15 +52,16 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    IEnumerator UnpauseGame() {
-        pauseButton.gameObject.SetActive(true);
-        pauseCanvas.gameObject.SetActive(false);
-        yield return new WaitForSeconds(.2f);
-        gamePaused = false;
-    }
+    //IEnumerator UnpauseGame() {
+    //    pauseButton.gameObject.SetActive(true);
+    //    pauseCanvas.gameObject.SetActive(false);
+    //    yield return new WaitForSeconds(.2f);
+    //    gamePaused = false;
+    //}
 
     public void StartGame() {
         pauseButton.gameObject.SetActive(true);
+        preStartScreenCanvas.gameObject.SetActive(false);
         StartCoroutine(StartGameWithDelay());
     }
 
@@ -76,6 +81,7 @@ public class GameController : MonoBehaviour {
 
     public void TimeOver() {
         player.IsDead();
+        pauseButton.gameObject.SetActive(false);
         scoreHandler.AddFinalScores();
         gameOverHandler.GameOver(scoreHandler.GetTotalScore(), scoreHandler.GetHighestComboAchieved());
     }
@@ -91,5 +97,8 @@ public class GameController : MonoBehaviour {
     public bool IsGamePaused() {
         return gamePaused;
     }
+
+    //TODO: HIGH: Add script for Music, High Score, and Achievement buttons
+    //Display on a new canvas
 
 }
