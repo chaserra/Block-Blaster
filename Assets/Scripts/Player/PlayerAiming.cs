@@ -41,7 +41,7 @@ public class PlayerAiming : MonoBehaviour {
 
 
     void Update() {
-        if(player.IsAlive() && !gameController.IsGamePaused()) {
+        if(player.IsAlive() && !gameController.IsGamePaused() && !gameController.IsInMenu()) {
             RotateAndShoot();
             Reload();
         }

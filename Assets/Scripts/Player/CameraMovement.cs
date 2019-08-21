@@ -8,6 +8,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class CameraMovement : MonoBehaviour {
 
     //Cache
+    GameController gameController;
     [Header("Object References")]
     [SerializeField] GameObject cameraPivot;
     [SerializeField] GameObject turretBase;
@@ -27,11 +28,12 @@ public class CameraMovement : MonoBehaviour {
     float rotationTreshold = 0;
 
     void Start() {
+        gameController = FindObjectOfType<GameController>();
         rotationTreshold = turretRotationTreshold;
     }
 
     void Update() {
-        if(EventSystem.current.currentSelectedGameObject == null) {
+        if(EventSystem.current.currentSelectedGameObject == null && !gameController.IsInMenu()) {
             CheckAngleAndRotate();
             PanCamera();
         }

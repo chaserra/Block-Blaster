@@ -34,7 +34,10 @@ public class PreGameStartHandler : MonoBehaviour {
     }
 
     private void StartInstructions() {
-        if(!hasStarted && EventSystem.current.currentSelectedGameObject == null) {
+        if(!hasStarted 
+            && EventSystem.current.currentSelectedGameObject == null 
+            && !gameController.IsInMenu()) 
+        {
             if (CrossPlatformInputManager.GetButtonDown("Fire1") || Input.touchCount > 0) {
                 if (Input.touchCount > 0) {
                     isTouching = true;

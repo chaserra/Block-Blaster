@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     //State
     private bool gameStarted = false;
     private bool gamePaused = false;
+    private bool isInMenus = false;
 
     void Start() {
         player = FindObjectOfType<Player>();
@@ -98,7 +99,17 @@ public class GameController : MonoBehaviour {
         return gamePaused;
     }
 
+    public void SetIsInMenu(bool expression) {
+        isInMenus = expression;
+    }
+
+    public bool IsInMenu() {
+        return isInMenus;
+    }
+
     //TODO: HIGH: Add script for Music, High Score, and Achievement buttons
-    //Display on a new canvas
+    //Music = Mute or Unmute
+    //High Score = Display best scores
+    //Achievements = Display achievements
 
 }
