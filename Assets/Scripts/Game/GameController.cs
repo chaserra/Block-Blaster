@@ -20,17 +20,25 @@ public class GameController : MonoBehaviour {
     [SerializeField] Canvas pauseCanvas;
     [SerializeField] float bonusTime = 10f;
 
+    [Header("High Scores and Achievements")]
+    [SerializeField] TextMeshProUGUI bestScoreText;
+    [SerializeField] TextMeshProUGUI bestComboText;
+
     //State
     private bool gameStarted = false;
     private bool gamePaused = false;
     private bool isInMenus = false;
 
-    void Start() {
+    void Awake() {
         player = FindObjectOfType<Player>();
         scoreHandler = GetComponent<ScoreHandler>();
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
+    }
+
+    void Start() {
+        LoadProgress();
         scoreText.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
@@ -53,6 +61,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    //TODO: High: Remove this if pause works okay in mobile
     //IEnumerator UnpauseGame() {
     //    pauseButton.gameObject.SetActive(true);
     //    pauseCanvas.gameObject.SetActive(false);
@@ -60,6 +69,7 @@ public class GameController : MonoBehaviour {
     //    gamePaused = false;
     //}
 
+    //GAME START
     public void StartGame() {
         pauseButton.gameObject.SetActive(true);
         preStartScreenCanvas.gameObject.SetActive(false);
@@ -76,15 +86,10 @@ public class GameController : MonoBehaviour {
         return gameStarted;
     }
 
+
+    //IN-GAME
     public void AddScore(int score) {
         scoreHandler.AddScore(score);
-    }
-
-    public void TimeOver() {
-        player.IsDead();
-        pauseButton.gameObject.SetActive(false);
-        scoreHandler.AddFinalScores();
-        gameOverHandler.GameOver(scoreHandler.GetTotalScore(), scoreHandler.GetHighestComboAchieved());
     }
 
     public void NextPhase() {
@@ -95,6 +100,16 @@ public class GameController : MonoBehaviour {
         gameTimeHandler.AddTime(bonusTime);
     }
 
+    public void TimeOver() {
+        player.IsDead();
+        pauseButton.gameObject.SetActive(false);
+        scoreHandler.AddFinalScores();
+        gameOverHandler.GameOver(scoreHandler.GetTotalScore(), scoreHandler.GetHighestComboAchieved());
+        SaveProgress();
+        LoadProgress();
+    }
+
+    //GETTERS AND SETTERS
     public bool IsGamePaused() {
         return gamePaused;
     }
@@ -107,9 +122,28 @@ public class GameController : MonoBehaviour {
         return isInMenus;
     }
 
-    //TODO: HIGH: Add script for Music, High Score, and Achievement buttons
+    //Save and Load
+    public void SaveProgress() {
+        SaveLoad.Save(this);
+    }
+
+    public void LoadProgress() {
+        PlayerData data = SaveLoad.Load();
+
+        bestScoreText.SetText(data.highestScore.ToString("n0"));
+        bestComboText.SetText(data.highestCombo.ToString("n0"));
+    }
+
+    public int GetHighScore() {
+        return scoreHandler.GetTotalScore();
+    }
+
+    public int GetHighestCombo() {
+        return scoreHandler.GetHighestComboAchieved();
+    }
+
+    //TODO: HIGH: Add script for Music, and Achievement buttons
     //Music = Mute or Unmute
-    //High Score = Display best scores
     //Achievements = Display achievements
 
 }

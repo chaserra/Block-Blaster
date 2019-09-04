@@ -13,8 +13,6 @@ public class PreGameStartHandler : MonoBehaviour {
     //Object References
     [SerializeField] TextMeshProUGUI dragText;
     [SerializeField] TextMeshProUGUI releaseText;
-    [SerializeField] TextMeshProUGUI highScoreField; //TODO: High: display on separate canvas
-    [SerializeField] TextMeshProUGUI bestComboField; //TODO: High: display on separate canvas
 
     //Parameters
     float animSpeedInSec = 1f;
@@ -25,7 +23,6 @@ public class PreGameStartHandler : MonoBehaviour {
 
     void Start() {
         gameController = GetComponent<GameController>();
-        //releaseText.gameObject.SetActive(false);
     }
 
 
@@ -47,9 +44,12 @@ public class PreGameStartHandler : MonoBehaviour {
             }
 
             if (CrossPlatformInputManager.GetButtonUp("Fire1") || isTouching) {
-                gameController.StartGame();
-                StartCoroutine(TextFade(releaseText, 0));
-                hasStarted = true;
+                if(Input.touchCount <= 0) {
+                    StartCoroutine(TextFade(releaseText, 0));
+                    gameController.StartGame();
+                    isTouching = false;
+                    hasStarted = true;
+                }
             }
         }
     }
@@ -59,12 +59,12 @@ public class PreGameStartHandler : MonoBehaviour {
         Color colorAlpha = text.color;
         colorAlpha.a = alphaValue;
 
-        float oldAnimSpeedInSec = animSpeedInSec;
+        //float oldAnimSpeedInSec = animSpeedInSec;
         float counter = 0;
 
-        while (counter < oldAnimSpeedInSec) {
+        while (counter < animSpeedInSec) {
             counter += Time.deltaTime;
-            text.color = Color.Lerp(currentColor, colorAlpha, counter / oldAnimSpeedInSec);
+            text.color = Color.Lerp(currentColor, colorAlpha, counter / animSpeedInSec);
             yield return null;
         }
         text.color = colorAlpha;
