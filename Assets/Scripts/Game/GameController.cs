@@ -145,5 +145,6 @@ public class GameController : MonoBehaviour {
     //TODO: HIGH: Add script for Music, and Achievement buttons
     //Music = Mute or Unmute
     //Achievements = Display achievements
+    //Check and remove this. Added on mac.
 
 }
