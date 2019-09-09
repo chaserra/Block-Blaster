@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class GameController : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour {
     GameTimeHandler gameTimeHandler;
     GameOverHandler gameOverHandler;
     TargetSpawner targetSpawner;
+    Achievements achievements;
 
     //Parameters
     [SerializeField] Canvas preStartScreenCanvas;
@@ -24,6 +26,22 @@ public class GameController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] TextMeshProUGUI bestComboText;
 
+    //TODO: High - Change these to image badges. Transparent if not obtained, solid if obtained
+    [SerializeField] TextMeshProUGUI ach01Text;
+    [SerializeField] TextMeshProUGUI ach02Text;
+    [SerializeField] TextMeshProUGUI ach03Text;
+    [SerializeField] TextMeshProUGUI ach04Text;
+    [SerializeField] TextMeshProUGUI ach05Text;
+    [SerializeField] TextMeshProUGUI ach06Text;
+    [SerializeField] TextMeshProUGUI ach07Text;
+    [SerializeField] TextMeshProUGUI ach08Text;
+    [SerializeField] TextMeshProUGUI ach09Text;
+    [SerializeField] TextMeshProUGUI ach10Text;
+    [SerializeField] TextMeshProUGUI ach11Text;
+    [SerializeField] TextMeshProUGUI ach12Text;
+    [SerializeField] TextMeshProUGUI ach13Text;
+    [SerializeField] TextMeshProUGUI ach14Text;
+
     //State
     private bool gameStarted = false;
     private bool gamePaused = false;
@@ -35,6 +53,7 @@ public class GameController : MonoBehaviour {
         gameTimeHandler = GetComponent<GameTimeHandler>();
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
+        achievements = GetComponent<Achievements>();
     }
 
     void Start() {
@@ -101,10 +120,13 @@ public class GameController : MonoBehaviour {
     }
 
     public void TimeOver() {
+        int totalScore = scoreHandler.GetTotalScore();
+        int totalCombo = scoreHandler.GetHighestComboAchieved();
         player.IsDead();
         pauseButton.gameObject.SetActive(false);
         scoreHandler.AddFinalScores();
-        gameOverHandler.GameOver(scoreHandler.GetTotalScore(), scoreHandler.GetHighestComboAchieved());
+        gameOverHandler.GameOver(totalScore, totalCombo);
+        CheckAchievements(totalScore, totalCombo);
         SaveProgress();
         LoadProgress();
     }
@@ -123,6 +145,10 @@ public class GameController : MonoBehaviour {
     }
 
     //Save and Load
+    private void CheckAchievements(int score, int combo) {
+        achievements.CheckAchievements(score, combo);
+    }
+
     public void SaveProgress() {
         SaveLoad.Save(this);
     }
@@ -132,6 +158,22 @@ public class GameController : MonoBehaviour {
 
         bestScoreText.SetText(data.highestScore.ToString("n0"));
         bestComboText.SetText(data.highestCombo.ToString("n0"));
+
+        //TODO: High - Change these to image badges. Transparent if not obtained, solid if obtained
+        ach01Text.SetText("01: " + data.ach01Obtained.ToString());
+        ach02Text.SetText("02: " + data.ach02Obtained.ToString());
+        ach03Text.SetText("03: " + data.ach03Obtained.ToString());
+        ach04Text.SetText("04: " + data.ach04Obtained.ToString());
+        ach05Text.SetText("05: " + data.ach05Obtained.ToString());
+        ach06Text.SetText("06: " + data.ach06Obtained.ToString());
+        ach07Text.SetText("07: " + data.ach07Obtained.ToString());
+        ach08Text.SetText("08: " + data.ach08Obtained.ToString());
+        ach09Text.SetText("09: " + data.ach09Obtained.ToString());
+        ach10Text.SetText("10: " + data.ach10Obtained.ToString());
+        ach11Text.SetText("11: " + data.ach11Obtained.ToString());
+        ach12Text.SetText("12: " + data.ach12Obtained.ToString());
+        ach13Text.SetText("13: " + data.ach13Obtained.ToString());
+        ach14Text.SetText("14: " + data.ach14Obtained.ToString());
     }
 
     public int GetHighScore() {
@@ -144,7 +186,5 @@ public class GameController : MonoBehaviour {
 
     //TODO: HIGH: Add script for Music, and Achievement buttons
     //Music = Mute or Unmute
-    //Achievements = Display achievements
-    //Check and remove this. Added on mac.
 
 }
