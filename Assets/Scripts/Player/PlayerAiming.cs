@@ -11,11 +11,13 @@ public class PlayerAiming : MonoBehaviour {
     //Cache
     private Player player;
     GameController gameController;
+    Animator animator;
     [Header("Object References")]
     [SerializeField] Transform turretBase;
     [SerializeField] Transform turretGun;
     [SerializeField] GameObject firePoint;
     [SerializeField] GameObject tankBullet;
+    [SerializeField] GameObject smokeBlastVFX;
     [SerializeField] Image reloadingHUD;
 
     //Parameters
@@ -32,10 +34,13 @@ public class PlayerAiming : MonoBehaviour {
     private float timeToFire = 0;
     private bool hasReloaded = true;
     private bool isTouching = false;
+    private ParticleSystem[] smokeBlast;
 
     void Start() {
         player = GetComponent<Player>();
         gameController = FindObjectOfType<GameController>();
+        animator = GetComponent<Animator>();
+        smokeBlast = smokeBlastVFX.GetComponentsInChildren<ParticleSystem>();
         timeToFire = rateOfFire;
     }
 
@@ -75,9 +80,12 @@ public class PlayerAiming : MonoBehaviour {
                         GameObject bullet = Instantiate(tankBullet, firePoint.transform.position, Quaternion.identity);
                         bullet.transform.localRotation = turretGun.rotation;
                         Destroy(bullet, 8f);
+                        for(int x = 0; x < smokeBlast.Length; x++) {
+                            smokeBlast[x].Play();
+                        }
+                        animator.SetTrigger("Retract");
                         hasReloaded = false;
                         timeToFire = 0;
-                        //TODO: Med-prio: Add turret retracting animation (for impact visuals)
                     } else {
                         Debug.Log("Can't fire yet!"); //TODO: Low-prio: Add sound effect and no bullet image
                     }
