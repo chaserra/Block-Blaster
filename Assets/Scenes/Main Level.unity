@@ -13553,5 +13553,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 259362848142974743, guid: e8777616186abb242885ba6c743c03d9,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289552360887108908, guid: e8777616186abb242885ba6c743c03d9,
+        type: 3}
+      propertyPath: panSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289552360887108908, guid: e8777616186abb242885ba6c743c03d9,
+        type: 3}
+      propertyPath: turretRotationTreshold
+      value: 28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8777616186abb242885ba6c743c03d9, type: 3}
