@@ -87,7 +87,7 @@ public class PlayerAiming : MonoBehaviour {
                         hasReloaded = false;
                         timeToFire = 0;
                     } else {
-                        Debug.Log("Can't fire yet!"); //TODO: Low-prio: Add sound effect and no bullet image
+                        //TODO: Low-prio: Add sound effect and no bullet image
                     }
                     isTouching = false;
                 }
