@@ -41,59 +41,45 @@ public class Achievements : MonoBehaviour {
 
         if(score >= ach01Requirement && ach01Code != data.ach01Code) {
             SaveLoad.SaveAchievements(ach01Code, 01);
-            Debug.Log("Achievement " + ach01Code + " unlocked!");
         }
         if (score >= ach02Requirement && ach02Code != data.ach02Code) {
             SaveLoad.SaveAchievements(ach02Code, 02);
-            Debug.Log("Achievement " + ach02Code + " unlocked!");
         }
         if (score >= ach03Requirement && ach03Code != data.ach03Code) {
             SaveLoad.SaveAchievements(ach03Code, 03);
-            Debug.Log("Achievement " + ach03Code + " unlocked!");
         }
         if (score >= ach04Requirement && ach04Code != data.ach04Code) {
             SaveLoad.SaveAchievements(ach04Code, 04);
-            Debug.Log("Achievement " + ach04Code + " unlocked!");
         }
         if (score >= ach05Requirement && ach05Code != data.ach05Code) {
             SaveLoad.SaveAchievements(ach05Code, 05);
-            Debug.Log("Achievement " + ach05Code + " unlocked!");
         }
         if (score >= ach06Requirement && ach06Code != data.ach06Code) {
             SaveLoad.SaveAchievements(ach06Code, 06);
-            Debug.Log("Achievement " + ach06Code + " unlocked!");
         }
         if (score >= ach07Requirement && ach07Code != data.ach07Code) {
             SaveLoad.SaveAchievements(ach07Code, 07);
-            Debug.Log("Achievement " + ach07Code + " unlocked!");
         }
         if (combo >= ach08Requirement && ach08Code != data.ach08Code) {
             SaveLoad.SaveAchievements(ach08Code, 08);
-            Debug.Log("Achievement " + ach08Code + " unlocked!");
         }
         if (combo >= ach09Requirement && ach09Code != data.ach09Code) {
             SaveLoad.SaveAchievements(ach09Code, 09);
-            Debug.Log("Achievement " + ach09Code + " unlocked!");
         }
         if (combo >= ach10Requirement && ach10Code != data.ach10Code) {
             SaveLoad.SaveAchievements(ach10Code, 10);
-            Debug.Log("Achievement " + ach10Code + " unlocked!");
         }
         if (combo >= ach11Requirement && ach11Code != data.ach11Code) {
             SaveLoad.SaveAchievements(ach11Code, 11);
-            Debug.Log("Achievement " + ach11Code + " unlocked!");
         }
         if (combo >= ach12Requirement && ach12Code != data.ach12Code) {
             SaveLoad.SaveAchievements(ach12Code, 12);
-            Debug.Log("Achievement " + ach12Code + " unlocked!");
         }
         if (combo >= ach13Requirement && ach13Code != data.ach13Code) {
             SaveLoad.SaveAchievements(ach13Code, 13);
-            Debug.Log("Achievement " + ach13Code + " unlocked!");
         }
         if (combo >= ach14Requirement && ach14Code != data.ach14Code) {
             SaveLoad.SaveAchievements(ach14Code, 14);
-            Debug.Log("Achievement " + ach14Code + " unlocked!");
         }
     }
 

@@ -27,7 +27,7 @@ public class PlayerAiming : MonoBehaviour {
     [SerializeField] float gunMaxLookDown = 3f;
 
     [Header("Config")]
-    [SerializeField] float rotateSpeed = 15f;
+    [SerializeField] float rotateSpeed = 3.2f;
     [SerializeField] float rateOfFire = 1f;
 
     //State
