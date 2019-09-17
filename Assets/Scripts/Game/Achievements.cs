@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Achievements : MonoBehaviour {
 
+    private SaveLoad saveLoad;
+
     //Score Achievements
     private int ach01Requirement = 100000;
     private string ach01Code = "01sA";
@@ -36,50 +38,54 @@ public class Achievements : MonoBehaviour {
     private int ach14Requirement = 1000;
     private string ach14Code = "14cA";
 
+    private void Awake() {
+        saveLoad = FindObjectOfType<SaveLoad>();
+    }
+
     public void CheckAchievements(int score, int combo) {
-        PlayerData data = SaveLoad.Load();
+        PlayerData data = saveLoad.Load();
 
         if(score >= ach01Requirement && ach01Code != data.ach01Code) {
-            SaveLoad.SaveAchievements(ach01Code, 01);
+            saveLoad.SaveAchievements(ach01Code, 01);
         }
         if (score >= ach02Requirement && ach02Code != data.ach02Code) {
-            SaveLoad.SaveAchievements(ach02Code, 02);
+            saveLoad.SaveAchievements(ach02Code, 02);
         }
         if (score >= ach03Requirement && ach03Code != data.ach03Code) {
-            SaveLoad.SaveAchievements(ach03Code, 03);
+            saveLoad.SaveAchievements(ach03Code, 03);
         }
         if (score >= ach04Requirement && ach04Code != data.ach04Code) {
-            SaveLoad.SaveAchievements(ach04Code, 04);
+            saveLoad.SaveAchievements(ach04Code, 04);
         }
         if (score >= ach05Requirement && ach05Code != data.ach05Code) {
-            SaveLoad.SaveAchievements(ach05Code, 05);
+            saveLoad.SaveAchievements(ach05Code, 05);
         }
         if (score >= ach06Requirement && ach06Code != data.ach06Code) {
-            SaveLoad.SaveAchievements(ach06Code, 06);
+            saveLoad.SaveAchievements(ach06Code, 06);
         }
         if (score >= ach07Requirement && ach07Code != data.ach07Code) {
-            SaveLoad.SaveAchievements(ach07Code, 07);
+            saveLoad.SaveAchievements(ach07Code, 07);
         }
         if (combo >= ach08Requirement && ach08Code != data.ach08Code) {
-            SaveLoad.SaveAchievements(ach08Code, 08);
+            saveLoad.SaveAchievements(ach08Code, 08);
         }
         if (combo >= ach09Requirement && ach09Code != data.ach09Code) {
-            SaveLoad.SaveAchievements(ach09Code, 09);
+            saveLoad.SaveAchievements(ach09Code, 09);
         }
         if (combo >= ach10Requirement && ach10Code != data.ach10Code) {
-            SaveLoad.SaveAchievements(ach10Code, 10);
+            saveLoad.SaveAchievements(ach10Code, 10);
         }
         if (combo >= ach11Requirement && ach11Code != data.ach11Code) {
-            SaveLoad.SaveAchievements(ach11Code, 11);
+            saveLoad.SaveAchievements(ach11Code, 11);
         }
         if (combo >= ach12Requirement && ach12Code != data.ach12Code) {
-            SaveLoad.SaveAchievements(ach12Code, 12);
+            saveLoad.SaveAchievements(ach12Code, 12);
         }
         if (combo >= ach13Requirement && ach13Code != data.ach13Code) {
-            SaveLoad.SaveAchievements(ach13Code, 13);
+            saveLoad.SaveAchievements(ach13Code, 13);
         }
         if (combo >= ach14Requirement && ach14Code != data.ach14Code) {
-            SaveLoad.SaveAchievements(ach14Code, 14);
+            saveLoad.SaveAchievements(ach14Code, 14);
         }
     }
 

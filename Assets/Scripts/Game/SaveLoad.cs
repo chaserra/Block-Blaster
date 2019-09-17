@@ -5,9 +5,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
 
-public static class SaveLoad {
+public class SaveLoad : MonoBehaviour {
 
-    public static void Save(GameController controller) {
+    private static SaveLoad _instance;
+    public static SaveLoad Instance { get { return _instance; } }
+
+    private void Awake() {
+        if (_instance == null) {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+        }
+    }
+
+    public void Save(GameController controller) {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerProgress.dat";
         PlayerData saveData = new PlayerData();
@@ -65,7 +77,7 @@ public static class SaveLoad {
         saveFile.Close();
     }
 
-    public static void SaveAchievements(string achievementCode, int achievementIndex) {
+    public void SaveAchievements(string achievementCode, int achievementIndex) {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerProgress.dat";
         PlayerData saveData = new PlayerData();
@@ -197,7 +209,7 @@ public static class SaveLoad {
         saveFile.Close();
     }
 
-    public static PlayerData Load() {
+    public PlayerData Load() {
         string path = Application.persistentDataPath + "/playerProgress.dat";
         BinaryFormatter formatter = new BinaryFormatter();
 

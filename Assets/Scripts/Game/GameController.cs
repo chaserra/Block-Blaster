@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
     GameOverHandler gameOverHandler;
     TargetSpawner targetSpawner;
     Achievements achievements;
+    SaveLoad saveLoad;
 
     //Parameters
     [SerializeField] Canvas preStartScreenCanvas;
@@ -54,6 +55,7 @@ public class GameController : MonoBehaviour {
         gameOverHandler = GetComponent<GameOverHandler>();
         targetSpawner = FindObjectOfType<TargetSpawner>();
         achievements = GetComponent<Achievements>();
+        saveLoad = FindObjectOfType<SaveLoad>();
     }
 
     void Start() {
@@ -150,11 +152,11 @@ public class GameController : MonoBehaviour {
     }
 
     public void SaveProgress() {
-        SaveLoad.Save(this);
+        saveLoad.Save(this);
     }
 
     public void LoadProgress() {
-        PlayerData data = SaveLoad.Load();
+        PlayerData data = saveLoad.Load();
 
         bestScoreText.SetText(data.highestScore.ToString("n0"));
         bestComboText.SetText(data.highestCombo.ToString("n0"));
