@@ -23,12 +23,12 @@ public class PlayerAiming : MonoBehaviour {
     //Parameters
     [Header("Clamp Rotation")]
     [SerializeField] float baseRotateClamp = 65f;
-    [SerializeField] float gunMaxLookUp = 45f;
+    [SerializeField] float gunMaxLookUp = 50f;
     [SerializeField] float gunMaxLookDown = 3f;
 
     [Header("Config")]
     [SerializeField] float rotateSpeed = 3.2f;
-    [SerializeField] float rateOfFire = 1f;
+    [SerializeField] float rateOfFire = 1.7f;
 
     //State
     private float timeToFire = 0;

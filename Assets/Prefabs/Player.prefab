@@ -586,7 +586,7 @@ MonoBehaviour:
   turretBase: {fileID: 4067294277063987913}
   rotateSpeed: 90
   cameraRotationAngle: 35
-  turretRotationTreshold: 34
+  turretRotationTreshold: 28
   xPanLimit: 0.8
   panSpeed: 20
 --- !u!1001 &1909515266359418023
@@ -783,9 +783,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 630db3a5180e441429dc6825c9a54c2d, type: 3}
+--- !u!1 &8796603512717480080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5396411638299320479, guid: 630db3a5180e441429dc6825c9a54c2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526379544009764879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8572300064513353564 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5045961222919788371, guid: 630db3a5180e441429dc6825c9a54c2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526379544009764879}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3568268208521528780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 105058908470064579, guid: 630db3a5180e441429dc6825c9a54c2d,
     type: 3}
   m_PrefabInstance: {fileID: 3526379544009764879}
   m_PrefabAsset: {fileID: 0}
@@ -801,21 +813,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3526379544009764879}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3568268208521528780 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 105058908470064579, guid: 630db3a5180e441429dc6825c9a54c2d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3526379544009764879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &696979789408902795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4133210366626754180, guid: 630db3a5180e441429dc6825c9a54c2d,
-    type: 3}
-  m_PrefabInstance: {fileID: 3526379544009764879}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8796603512717480080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5396411638299320479, guid: 630db3a5180e441429dc6825c9a54c2d,
     type: 3}
   m_PrefabInstance: {fileID: 3526379544009764879}
   m_PrefabAsset: {fileID: 0}
