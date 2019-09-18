@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20837393, g: 0.46096528, b: 0.73065275, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.20837542, g: 0.46096528, b: 0.7306529, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13466,6 +13466,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
+    - target: {fileID: 4271947137987601166, guid: 1b1c761cf1c1e384ea2ef5fbc5f8e88e,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271947137987601166, guid: 1b1c761cf1c1e384ea2ef5fbc5f8e88e,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -1.2384899e+17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271947137987601166, guid: 1b1c761cf1c1e384ea2ef5fbc5f8e88e,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: -4.7183607e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271947137987601166, guid: 1b1c761cf1c1e384ea2ef5fbc5f8e88e,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 9.345015e-34
+      objectReference: {fileID: 0}
     - target: {fileID: 4271947137987601167, guid: 1b1c761cf1c1e384ea2ef5fbc5f8e88e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13728,12 +13748,12 @@ PrefabInstance:
     - target: {fileID: 259362848142974743, guid: e8777616186abb242885ba6c743c03d9,
         type: 3}
       propertyPath: rotateSpeed
-      value: 160
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 1289552360887108908, guid: e8777616186abb242885ba6c743c03d9,
         type: 3}
       propertyPath: panSpeed
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: e8777616186abb242885ba6c743c03d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
