@@ -7,7 +7,9 @@ public class GameTimeHandler : MonoBehaviour {
 
     //Object References
     GameController gameController;
+    Animator timerParentAnimator;
     Animator bonusTimeAnimator;
+    [SerializeField] GameObject timerParent;
     [SerializeField] TextMeshProUGUI hoursText;
     [SerializeField] TextMeshProUGUI minutesText;
     [SerializeField] TextMeshProUGUI secondsText;
@@ -28,6 +30,7 @@ public class GameTimeHandler : MonoBehaviour {
     void Start() {
         gameController = GetComponent<GameController>();
         bonusTimeAnimator = bonusTimeText.gameObject.GetComponent<Animator>();
+        timerParentAnimator = timerParent.GetComponent<Animator>();
         bonusTimeText.gameObject.SetActive(false);
         hoursText.gameObject.transform.parent.gameObject.SetActive(false);
     }
@@ -45,6 +48,11 @@ public class GameTimeHandler : MonoBehaviour {
         if(timeRemaining > 0 && hasTimeRemaining) {
             timeRemaining -= Time.deltaTime;
             ConvertTimeValues();
+            if (timeRemaining <= 11f) {
+                timerParentAnimator.SetBool("Countdown Enlarge", true);
+            } else {
+                timerParentAnimator.SetBool("Countdown Enlarge", false);
+            }
         } else {
             OutOfTime();
         }
