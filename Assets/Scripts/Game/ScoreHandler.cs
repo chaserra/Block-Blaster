@@ -10,6 +10,7 @@ public class ScoreHandler : MonoBehaviour {
     //Cache
     GameController gameController;
     Image comboTimerBG;
+    Animator comboCounterAnimator;
 
     //References
     [SerializeField] TextMeshProUGUI scoreText;
@@ -21,6 +22,7 @@ public class ScoreHandler : MonoBehaviour {
     [SerializeField] float chainTimerInitial = 5f;
     [SerializeField] int comboAdjustTreshold = 100;
     [SerializeField] int timeAdjustComboNeededInitial = 50;
+    [SerializeField] int addToComboNeeded = 50;
 
     //State
     private int totalScore = 0;
@@ -39,6 +41,7 @@ public class ScoreHandler : MonoBehaviour {
     void Start() {
         gameController = GetComponent<GameController>();
         comboTimerBG = comboTimerUI.gameObject.transform.parent.gameObject.GetComponent<Image>();
+        comboCounterAnimator = comboCounterText.gameObject.GetComponent<Animator>();
         scoreText.SetText(totalScore.ToString());
         comboCounterText.SetText(comboMultiplier.ToString());
         comboScoreText.SetText(scoreToAdd.ToString());
@@ -107,7 +110,7 @@ public class ScoreHandler : MonoBehaviour {
         if(comboMultiplier >= timeAdjustComboNeeded && !timeAdjusted) {
             timeAdjusted = true; //Failsafe. Prevents double time adding.
             gameController.AddTimer();
-            timeAdjustComboNeeded += 50;
+            timeAdjustComboNeeded += addToComboNeeded;
             timeAdjusted = false; //Failsafe exit. Prevents double time adding.
         }
     }
@@ -123,6 +126,7 @@ public class ScoreHandler : MonoBehaviour {
         timer = 0f;
         comboMultiplier++;
         scoreToAdd += score;
+        comboCounterAnimator.SetTrigger("Quick Drop");
     }
 
     public void AddFinalScores() {

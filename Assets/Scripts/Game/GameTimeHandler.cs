@@ -7,6 +7,7 @@ public class GameTimeHandler : MonoBehaviour {
 
     //Object References
     GameController gameController;
+    Animator bonusTimeAnimator;
     [SerializeField] TextMeshProUGUI hoursText;
     [SerializeField] TextMeshProUGUI minutesText;
     [SerializeField] TextMeshProUGUI secondsText;
@@ -26,6 +27,7 @@ public class GameTimeHandler : MonoBehaviour {
 
     void Start() {
         gameController = GetComponent<GameController>();
+        bonusTimeAnimator = bonusTimeText.gameObject.GetComponent<Animator>();
         bonusTimeText.gameObject.SetActive(false);
         hoursText.gameObject.transform.parent.gameObject.SetActive(false);
     }
@@ -106,6 +108,7 @@ public class GameTimeHandler : MonoBehaviour {
     IEnumerator DisplayBonusTimeText(string time) {
         bonusTimeText.gameObject.SetActive(true);
         bonusTimeText.SetText("+" + time + "s");
+        bonusTimeAnimator.SetTrigger("Add Timer");
         yield return new WaitForSeconds(2f);
         bonusTimeText.gameObject.SetActive(false);
     }
