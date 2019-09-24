@@ -69,7 +69,6 @@ public class GameController : MonoBehaviour {
         if(gamePaused) {
             //Unpause
             Time.timeScale = 1f;
-            //StartCoroutine(UnpauseGame());
             pauseButton.gameObject.SetActive(true);
             pauseCanvas.gameObject.SetActive(false);
             gamePaused = false;
@@ -81,14 +80,6 @@ public class GameController : MonoBehaviour {
             Time.timeScale = 0f;
         }
     }
-
-    //TODO: High: Remove this if pause works okay in mobile
-    //IEnumerator UnpauseGame() {
-    //    pauseButton.gameObject.SetActive(true);
-    //    pauseCanvas.gameObject.SetActive(false);
-    //    yield return new WaitForSeconds(.2f);
-    //    gamePaused = false;
-    //}
 
     //GAME START
     public void StartGame() {
@@ -186,7 +177,6 @@ public class GameController : MonoBehaviour {
         return scoreHandler.GetHighestComboAchieved();
     }
 
-    //TODO: HIGH: Add script for Music, and Achievement buttons
-    //Music = Mute or Unmute
+    //TODO: HIGH: Music = Mute or Unmute
 
 }

@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour {
 
+    public void PlayGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void RestartLevel() {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu() {
-        //TODO: HIGH: Load Main Menu scene OR high scores if main menu is removed from the game
-        //Time.timeScale = 1;
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 
     public void QuitGame() {
