@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TitleScreenController : MonoBehaviour {
@@ -11,21 +12,20 @@ public class TitleScreenController : MonoBehaviour {
     [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] TextMeshProUGUI bestComboText;
 
-    //TODO: High - Change these to image badges. Transparent if not obtained, solid if obtained
-    [SerializeField] TextMeshProUGUI ach01Text;
-    [SerializeField] TextMeshProUGUI ach02Text;
-    [SerializeField] TextMeshProUGUI ach03Text;
-    [SerializeField] TextMeshProUGUI ach04Text;
-    [SerializeField] TextMeshProUGUI ach05Text;
-    [SerializeField] TextMeshProUGUI ach06Text;
-    [SerializeField] TextMeshProUGUI ach07Text;
-    [SerializeField] TextMeshProUGUI ach08Text;
-    [SerializeField] TextMeshProUGUI ach09Text;
-    [SerializeField] TextMeshProUGUI ach10Text;
-    [SerializeField] TextMeshProUGUI ach11Text;
-    [SerializeField] TextMeshProUGUI ach12Text;
-    [SerializeField] TextMeshProUGUI ach13Text;
-    [SerializeField] TextMeshProUGUI ach14Text;
+    [SerializeField] Image achievement01Cover;
+    [SerializeField] Image achievement02Cover;
+    [SerializeField] Image achievement03Cover;
+    [SerializeField] Image achievement04Cover;
+    [SerializeField] Image achievement05Cover;
+    [SerializeField] Image achievement06Cover;
+    [SerializeField] Image achievement07Cover;
+    [SerializeField] Image achievement08Cover;
+    [SerializeField] Image achievement09Cover;
+    [SerializeField] Image achievement10Cover;
+    [SerializeField] Image achievement11Cover;
+    [SerializeField] Image achievement12Cover;
+    [SerializeField] Image achievement13Cover;
+    [SerializeField] Image achievement14Cover;
 
     void Awake() {
         saveLoad = FindObjectOfType<SaveLoad>();
@@ -41,21 +41,77 @@ public class TitleScreenController : MonoBehaviour {
         bestScoreText.SetText(data.highestScore.ToString("n0"));
         bestComboText.SetText(data.highestCombo.ToString("n0"));
 
-        //TODO: High - Change these to image badges. Transparent if not obtained, solid if obtained
-        ach01Text.SetText("01: " + data.ach01Obtained.ToString());
-        ach02Text.SetText("02: " + data.ach02Obtained.ToString());
-        ach03Text.SetText("03: " + data.ach03Obtained.ToString());
-        ach04Text.SetText("04: " + data.ach04Obtained.ToString());
-        ach05Text.SetText("05: " + data.ach05Obtained.ToString());
-        ach06Text.SetText("06: " + data.ach06Obtained.ToString());
-        ach07Text.SetText("07: " + data.ach07Obtained.ToString());
-        ach08Text.SetText("08: " + data.ach08Obtained.ToString());
-        ach09Text.SetText("09: " + data.ach09Obtained.ToString());
-        ach10Text.SetText("10: " + data.ach10Obtained.ToString());
-        ach11Text.SetText("11: " + data.ach11Obtained.ToString());
-        ach12Text.SetText("12: " + data.ach12Obtained.ToString());
-        ach13Text.SetText("13: " + data.ach13Obtained.ToString());
-        ach14Text.SetText("14: " + data.ach14Obtained.ToString());
+        //Check if Achievements are unlocked
+        if (data.ach01Obtained) {
+            Color imageColor = achievement01Cover.color;
+            imageColor.a = 0;
+            achievement01Cover.color = imageColor;
+        }
+        if (data.ach02Obtained) {
+            Color imageColor = achievement02Cover.color;
+            imageColor.a = 0;
+            achievement02Cover.color = imageColor;
+        }
+        if (data.ach03Obtained) {
+            Color imageColor = achievement03Cover.color;
+            imageColor.a = 0;
+            achievement03Cover.color = imageColor;
+        }
+        if (data.ach04Obtained) {
+            Color imageColor = achievement04Cover.color;
+            imageColor.a = 0;
+            achievement04Cover.color = imageColor;
+        }
+        if (data.ach05Obtained) {
+            Color imageColor = achievement05Cover.color;
+            imageColor.a = 0;
+            achievement05Cover.color = imageColor;
+        }
+        if (data.ach06Obtained) {
+            Color imageColor = achievement06Cover.color;
+            imageColor.a = 0;
+            achievement06Cover.color = imageColor;
+        }
+        if (data.ach07Obtained) {
+            Color imageColor = achievement07Cover.color;
+            imageColor.a = 0;
+            achievement07Cover.color = imageColor;
+        }
+        if (data.ach08Obtained) {
+            Color imageColor = achievement08Cover.color;
+            imageColor.a = 0;
+            achievement08Cover.color = imageColor;
+        }
+        if (data.ach09Obtained) {
+            Color imageColor = achievement09Cover.color;
+            imageColor.a = 0;
+            achievement09Cover.color = imageColor;
+        }
+        if (data.ach10Obtained) {
+            Color imageColor = achievement10Cover.color;
+            imageColor.a = 0;
+            achievement10Cover.color = imageColor;
+        }
+        if (data.ach11Obtained) {
+            Color imageColor = achievement11Cover.color;
+            imageColor.a = 0;
+            achievement11Cover.color = imageColor;
+        }
+        if (data.ach12Obtained) {
+            Color imageColor = achievement12Cover.color;
+            imageColor.a = 0;
+            achievement12Cover.color = imageColor;
+        }
+        if (data.ach13Obtained) {
+            Color imageColor = achievement13Cover.color;
+            imageColor.a = 0;
+            achievement13Cover.color = imageColor;
+        }
+        if (data.ach14Obtained) {
+            Color imageColor = achievement14Cover.color;
+            imageColor.a = 0;
+            achievement14Cover.color = imageColor;
+        }
     }
 
 }
