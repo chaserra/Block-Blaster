@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20837393, g: 0.46096528, b: 0.73065275, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.20837542, g: 0.46096528, b: 0.7306529, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1056,6 +1056,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189362574}
   m_CullTransparentMesh: 0
+--- !u!1 &259937787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259937788}
+  - component: {fileID: 259937790}
+  - component: {fileID: 259937789}
+  m_Layer: 5
+  m_Name: Combo Timer Border
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &259937788
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259937787}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1133267529}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.000015258789}
+  m_SizeDelta: {x: 25.6, y: 25.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &259937789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259937787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 23127c5c9ffe3ac47b18a41baffbf916, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &259937790
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259937787}
+  m_CullTransparentMesh: 0
 --- !u!224 &309282851 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7880970587655890886, guid: ba145df689eb5df44a330184c5cb33b9,
@@ -2063,8 +2138,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278223103
-  m_fontColor: {r: 1, g: 0.50211763, b: 0, a: 1}
+    rgba: 4282359807
+  m_fontColor: {r: 1, g: 0.6264706, b: 0.25, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2679,8 +2754,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282707031
-  m_fontColor: {r: 0.34239444, g: 0.9254902, b: 0.2666667, a: 1}
+    rgba: 4287359894
+  m_fontColor: {r: 0.5906515, g: 0.9245283, b: 0.5451228, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3236,8 +3311,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4284867124
-  m_fontColor: {r: 0.20496619, g: 0.8867924, b: 0.39977375, a: 1}
+    rgba: 4281714468
+  m_fontColor: {r: 0.14404595, g: 0.7830189, b: 0.20888999, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3511,6 +3586,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1000567893}
     m_Modifications:
+    - target: {fileID: 7880970587655890887, guid: ba145df689eb5df44a330184c5cb33b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Backdrop
+      objectReference: {fileID: 0}
     - target: {fileID: 7880970587655890886, guid: ba145df689eb5df44a330184c5cb33b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3615,11 +3695,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7880970587655890887, guid: ba145df689eb5df44a330184c5cb33b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Backdrop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba145df689eb5df44a330184c5cb33b9, type: 3}
@@ -3764,13 +3839,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1184356086}
+  - {fileID: 259937788}
   m_Father: {fileID: 1123095950}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -147.87, y: -111.2}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 25.6, y: 25.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133267530
 MonoBehaviour:
@@ -3805,7 +3881,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 817299ebccfa4b54f9c8c8114498ab14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43e822300692303438d77d5db4ae9839, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4036,7 +4112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0000016689, y: -0.0000059605}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 25.6, y: 25.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184356087
 MonoBehaviour:
@@ -4058,7 +4134,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d62c12119277e1b43a573600f5956d5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 43e822300692303438d77d5db4ae9839, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4301,8 +4377,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282664172
-  m_fontColor: {r: 0.9254902, g: 0.26666668, b: 0.26666668, a: 1}
+    rgba: 4286809087
+  m_fontColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5582,8 +5658,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255360
-  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
+    rgba: 4278255464
+  m_fontColor: {r: 0.40864503, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6265,6 +6341,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1701817193}
     m_Modifications:
+    - target: {fileID: 7063128912810107373, guid: 96bcbe832a20f154e829f06cfb16cacb,
+        type: 3}
+      propertyPath: m_Name
+      value: Opaque Backdrop
+      objectReference: {fileID: 0}
     - target: {fileID: 7063128912810107374, guid: 96bcbe832a20f154e829f06cfb16cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6369,11 +6450,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063128912810107373, guid: 96bcbe832a20f154e829f06cfb16cacb,
-        type: 3}
-      propertyPath: m_Name
-      value: Opaque Backdrop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96bcbe832a20f154e829f06cfb16cacb, type: 3}
@@ -7891,16 +7967,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6460481719001251739, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6460481718566487503, guid: 6c5f89a799038e74aa24cead05a0941b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 426839890}
+    - target: {fileID: 6460481719001251739, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6460481718245866577, guid: 6c5f89a799038e74aa24cead05a0941b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -8282,6 +8358,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1000567893}
     m_Modifications:
+    - target: {fileID: 7063128912810107373, guid: 96bcbe832a20f154e829f06cfb16cacb,
+        type: 3}
+      propertyPath: m_Name
+      value: Opaque Backdrop
+      objectReference: {fileID: 0}
     - target: {fileID: 7063128912810107374, guid: 96bcbe832a20f154e829f06cfb16cacb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8386,11 +8467,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063128912810107373, guid: 96bcbe832a20f154e829f06cfb16cacb,
-        type: 3}
-      propertyPath: m_Name
-      value: Opaque Backdrop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96bcbe832a20f154e829f06cfb16cacb, type: 3}
@@ -8550,6 +8626,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1701817193}
     m_Modifications:
+    - target: {fileID: 7880970587655890887, guid: ba145df689eb5df44a330184c5cb33b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Backdrop
+      objectReference: {fileID: 0}
     - target: {fileID: 7880970587655890886, guid: ba145df689eb5df44a330184c5cb33b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8654,11 +8735,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7880970587655890887, guid: ba145df689eb5df44a330184c5cb33b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Backdrop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba145df689eb5df44a330184c5cb33b9, type: 3}

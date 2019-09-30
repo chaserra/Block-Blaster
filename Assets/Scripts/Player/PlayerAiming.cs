@@ -19,6 +19,7 @@ public class PlayerAiming : MonoBehaviour {
     [SerializeField] GameObject tankBullet;
     [SerializeField] GameObject smokeBlastVFX;
     [SerializeField] Image reloadingHUD;
+    [SerializeField] Animator ammoHUDanimator;
 
     //Parameters
     [Header("Clamp Rotation")]
@@ -87,7 +88,8 @@ public class PlayerAiming : MonoBehaviour {
                         hasReloaded = false;
                         timeToFire = 0;
                     } else {
-                        //TODO: Low-prio: Add sound effect and no bullet image
+                        //TODO: Low-prio: Add sound effect
+                        ammoHUDanimator.SetBool("Flash Icon", true);
                     }
                     isTouching = false;
                 }
@@ -109,6 +111,7 @@ public class PlayerAiming : MonoBehaviour {
             }
         } else {
             hasReloaded = true;
+            ammoHUDanimator.SetBool("Flash Icon", false);
             reloadingHUD.gameObject.transform.parent.gameObject.SetActive(false);
         }
     }

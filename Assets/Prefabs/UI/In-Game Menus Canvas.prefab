@@ -2273,6 +2273,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ad4ba71eba99a434aadb905b1bea6ce3,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &4643353642350432179 stripped
@@ -2428,6 +2434,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 33264eef71facf54395a083250e6a178,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &5870160515239068588 stripped
@@ -3558,6 +3570,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 750
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f776acf2c8a632b49ae104bddd47e396,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &1204336236103236802 stripped
@@ -3713,6 +3731,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a28ea8f0ee4ea6947815a914549bff99,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &1223306556679980639 stripped
@@ -4029,6 +4053,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 1,000
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79e7e0cf2713583448681eb207ba07bf,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &1639022754126833810 stripped
@@ -4667,6 +4697,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 150
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c5cd8bc18acdf83488c99e6bbfeb9bca,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &4219732385878684324 stripped
@@ -4822,6 +4858,12 @@ PrefabInstance:
       propertyPath: m_text
       value: Achieve a max combo of 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1585335831086181483, guid: d31a79706a55082458383088173aeeaf,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 307394ede41d32c43b4931f04d304c22,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31a79706a55082458383088173aeeaf, type: 3}
 --- !u!224 &4513303840403364963 stripped
