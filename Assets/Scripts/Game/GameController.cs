@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour {
     [Header("High Scores and Achievements")]
     [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] TextMeshProUGUI bestComboText;
+    [SerializeField] GameObject newLabelScore;
+    [SerializeField] GameObject newLabelCombo;
 
     [SerializeField] Image achievement01Cover;
     [SerializeField] Image achievement02Cover;
@@ -112,13 +114,13 @@ public class GameController : MonoBehaviour {
     }
 
     public void TimeOver() {
+        scoreHandler.AddFinalScores();
         int totalScore = scoreHandler.GetTotalScore();
         int totalCombo = scoreHandler.GetHighestComboAchieved();
         player.IsDead();
         pauseButton.gameObject.SetActive(false);
-        scoreHandler.AddFinalScores();
         gameOverHandler.GameOver(totalScore, totalCombo);
-        CheckAchievements(totalScore, totalCombo);
+        CheckAchievementsAndNewBest(totalScore, totalCombo);
         SaveProgress();
         LoadProgress();
     }
@@ -137,8 +139,21 @@ public class GameController : MonoBehaviour {
     }
 
     //Save and Load
-    private void CheckAchievements(int score, int combo) {
+    private void CheckAchievementsAndNewBest(int score, int combo) {
+        PlayerData data = saveLoad.Load();
+
         achievements.CheckAchievements(score, combo);
+
+        if(score > data.highestScore) {
+            newLabelScore.SetActive(true);
+            Animator animator = newLabelScore.GetComponent<Animator>();
+            animator.SetTrigger("Pulse");
+        }
+        if (combo > data.highestCombo) {
+            newLabelCombo.SetActive(true);
+            Animator animator = newLabelCombo.GetComponent<Animator>();
+            animator.SetTrigger("Pulse");
+        }
     }
 
     public void SaveProgress() {
