@@ -39,7 +39,7 @@ public class PlayerAiming : MonoBehaviour {
 
     void Start() {
         player = GetComponent<Player>();
-        gameController = FindObjectOfType<GameController>();
+        gameController = GameController.gcReference;
         animator = GetComponent<Animator>();
         smokeBlast = smokeBlastVFX.GetComponentsInChildren<ParticleSystem>();
         timeToFire = rateOfFire;

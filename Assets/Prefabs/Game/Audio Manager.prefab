@@ -49,46 +49,54 @@ MonoBehaviour:
     volume: 0.15
     pitch: 1
     loop: 1
+    ignoreListener: 0
     source: {fileID: 0}
   - name: Main Music
     clip: {fileID: 8300000, guid: 78db8677240aa8b4ead97959d9d26272, type: 3}
-    volume: 0.25
+    volume: 0.22
     pitch: 1
     loop: 1
+    ignoreListener: 0
     source: {fileID: 0}
   - name: Shoot
     clip: {fileID: 8300000, guid: a005fdc7079564749a0d082282506c79, type: 3}
     volume: 0.5
     pitch: 0.7
     loop: 0
+    ignoreListener: 1
     source: {fileID: 0}
   - name: Reloading
     clip: {fileID: 8300000, guid: 99fe46ca26c3c684a833421615fa61fd, type: 3}
     volume: 1
     pitch: 1.5
     loop: 0
+    ignoreListener: 1
     source: {fileID: 0}
   - name: No Ammo
     clip: {fileID: 8300000, guid: 53b5f08d44aac9c449ac99ba52d97e6b, type: 3}
     volume: 0.7
     pitch: 1.6
     loop: 0
+    ignoreListener: 1
     source: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: 2636a8fe8f0c35943bd99d7da41f4534, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    ignoreListener: 1
     source: {fileID: 0}
   - name: Chime
     clip: {fileID: 8300000, guid: 08fc4fa1ce74a3547b3332edbe3333c5, type: 3}
     volume: 1
     pitch: 1
     loop: 0
+    ignoreListener: 1
     source: {fileID: 0}
   - name: Title Theme
     clip: {fileID: 8300000, guid: 68be80ba8b07567499825d5beadf5418, type: 3}
     volume: 0.5
     pitch: 1
     loop: 1
+    ignoreListener: 0
     source: {fileID: 0}

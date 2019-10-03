@@ -39,7 +39,7 @@ public class ScoreHandler : MonoBehaviour {
     private int highestComboAchieved = 0;
 
     void Start() {
-        gameController = GetComponent<GameController>();
+        gameController = GameController.gcReference;
         comboTimerBG = comboTimerUI.gameObject.transform.parent.gameObject.GetComponent<Image>();
         comboCounterAnimator = comboCounterText.gameObject.GetComponent<Animator>();
         scoreText.SetText(totalScore.ToString());

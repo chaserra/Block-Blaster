@@ -28,7 +28,7 @@ public class CameraMovement : MonoBehaviour {
     float rotationTreshold = 0;
 
     void Start() {
-        gameController = FindObjectOfType<GameController>();
+        gameController = GameController.gcReference;
         rotationTreshold = turretRotationTreshold;
     }
 

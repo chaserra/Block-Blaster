@@ -35,6 +35,7 @@ public class TitleScreenController : MonoBehaviour {
 
     void Start() {
         LoadProgress();
+        LoadPreferences();
         audioManager.Stop("Main Music");
         audioManager.Play("Title Theme");
     }
@@ -115,6 +116,18 @@ public class TitleScreenController : MonoBehaviour {
             Color imageColor = achievement14Cover.color;
             imageColor.a = 0;
             achievement14Cover.color = imageColor;
+        }
+    }
+
+    public void LoadPreferences() {
+        PlayerPreferences data = saveLoad.LoadPreferences();
+
+        AudioListener.pause = data.muted;
+
+        if(data.muted) {
+            AudioListener.volume = 0f;
+        } else {
+            AudioListener.volume = 1f;
         }
     }
 

@@ -22,7 +22,7 @@ public class PreGameStartHandler : MonoBehaviour {
     private bool isTouching = false;
 
     void Start() {
-        gameController = GetComponent<GameController>();
+        gameController = GameController.gcReference;
     }
 
 

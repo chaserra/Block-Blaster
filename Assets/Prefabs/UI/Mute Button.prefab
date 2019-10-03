@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 249593138467026279}
   - component: {fileID: 249593138467026278}
   - component: {fileID: 249593138467026273}
+  - component: {fileID: 8870613745818502415}
   m_Layer: 0
   m_Name: Mute Button
   m_TagString: Untagged
@@ -118,6 +119,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 249593138467026278}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8870613745818502415}
+        m_MethodName: Mute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8870613745818502415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249593138467026275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58066ed4687120e46ae628b306086658, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unmuted: {fileID: 21300000, guid: 77d3f5e8043607e43bc7252646006aee, type: 3}
+  muted: {fileID: 21300000, guid: f216345fe95e4564383858ba18c80e0c, type: 3}

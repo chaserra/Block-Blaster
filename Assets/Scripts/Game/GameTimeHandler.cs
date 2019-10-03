@@ -28,7 +28,7 @@ public class GameTimeHandler : MonoBehaviour {
     private float currentTime = 0;
 
     void Start() {
-        gameController = GetComponent<GameController>();
+        gameController = GameController.gcReference;
         bonusTimeAnimator = bonusTimeText.gameObject.GetComponent<Animator>();
         timerParentAnimator = timerParent.GetComponent<Animator>();
         bonusTimeText.gameObject.SetActive(false);

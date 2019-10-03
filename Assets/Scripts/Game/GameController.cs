@@ -50,7 +50,10 @@ public class GameController : MonoBehaviour {
     private bool gamePaused = false;
     private bool isInMenus = false;
 
+    public static GameController gcReference { get; private set; }
+
     void Awake() {
+        gcReference = this;
         player = FindObjectOfType<Player>();
         scoreHandler = GetComponent<ScoreHandler>();
         gameTimeHandler = GetComponent<GameTimeHandler>();
@@ -63,6 +66,7 @@ public class GameController : MonoBehaviour {
 
     void Start() {
         LoadProgress();
+        LoadPreferences();
         scoreText.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
@@ -253,6 +257,18 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void LoadPreferences() {
+        PlayerPreferences data = saveLoad.LoadPreferences();
+
+        AudioListener.pause = data.muted;
+
+        if (data.muted) {
+            AudioListener.volume = 0f;
+        } else {
+            AudioListener.volume = 1f;
+        }
+    }
+
     public int GetHighScore() {
         return scoreHandler.GetTotalScore();
     }
@@ -260,7 +276,5 @@ public class GameController : MonoBehaviour {
     public int GetHighestCombo() {
         return scoreHandler.GetHighestComboAchieved();
     }
-
-    //TODO: HIGH: Music = Mute or Unmute
 
 }

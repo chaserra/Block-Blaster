@@ -31,7 +31,7 @@ public class Target : MonoBehaviour {
     //}
 
     void Awake() {
-        gameController = FindObjectOfType<GameController>();
+        gameController = GameController.gcReference;
     }
 
     void Start() {

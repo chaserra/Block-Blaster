@@ -43,7 +43,7 @@ public class TargetSpawner : MonoBehaviour {
     }
 
     void Start() {
-        gameController = FindObjectOfType<GameController>();
+        gameController = GameController.gcReference;
         initialMinSpawnTime = minSpawnTime;
         initialMaxSpawnTime = maxSpawnTime;
     }

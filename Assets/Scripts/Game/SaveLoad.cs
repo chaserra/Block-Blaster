@@ -209,9 +209,22 @@ public class SaveLoad : MonoBehaviour {
         saveFile.Close();
     }
 
-    public PlayerData Load() {
-        string path = Application.persistentDataPath + "/playerProgress.dat";
+    public void SavePreferences(bool muted) {
         BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerPreferences.dat";
+        PlayerPreferences saveData = new PlayerPreferences();
+
+        saveData.muted = muted;
+
+        FileStream saveFile = new FileStream(path, FileMode.Create);
+
+        formatter.Serialize(saveFile, saveData);
+        saveFile.Close();
+    }
+
+    public PlayerData Load() {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerProgress.dat";
 
         if (File.Exists(path)) {
             FileStream file = new FileStream(path, FileMode.Open);
@@ -224,6 +237,28 @@ public class SaveLoad : MonoBehaviour {
             FileStream file = new FileStream(path, FileMode.Create);
 
             PlayerData data = new PlayerData();
+            formatter.Serialize(file, data);
+            file.Close();
+
+            return data;
+        }
+    }
+
+    public PlayerPreferences LoadPreferences() {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerPreferences.dat";
+
+        if(File.Exists(path)) {
+            FileStream file = new FileStream(path, FileMode.Open);
+
+            PlayerPreferences data = (PlayerPreferences)formatter.Deserialize(file);
+            file.Close();
+
+            return data;
+        } else {
+            FileStream file = new FileStream(path, FileMode.Create);
+
+            PlayerPreferences data = new PlayerPreferences();
             formatter.Serialize(file, data);
             file.Close();
 
