@@ -85,10 +85,11 @@ public class PlayerAiming : MonoBehaviour {
                             smokeBlast[x].Play();
                         }
                         animator.SetTrigger("Retract");
+                        gameController.PlayAudio("Shoot");
                         hasReloaded = false;
                         timeToFire = 0;
                     } else {
-                        //TODO: Low-prio: Add sound effect
+                        gameController.PlayAudio("No Ammo");
                         ammoHUDanimator.SetBool("Flash Icon", true);
                     }
                     isTouching = false;
@@ -110,6 +111,9 @@ public class PlayerAiming : MonoBehaviour {
                 reloadingHUD.color = Color.green;
             }
         } else {
+            if(!hasReloaded) {
+                gameController.PlayAudio("Reloading");
+            }
             hasReloaded = true;
             ammoHUDanimator.SetBool("Flash Icon", false);
             reloadingHUD.gameObject.transform.parent.gameObject.SetActive(false);

@@ -14,13 +14,6 @@ public class TankBulletProjectile : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Target") {
             hitCounter++;
-            GameObject hitEffect = Instantiate(
-                hitVFX, 
-                transform.position, 
-                Quaternion.LookRotation(transform.position - other.transform.position),
-                GameObject.FindGameObjectWithTag("VFX").transform
-            );
-            Destroy(hitEffect, 4f);
             if (hitCounter >= maxNumHit) {
                 Destroy(gameObject);
             }

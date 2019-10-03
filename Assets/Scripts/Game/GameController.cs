@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
     TargetSpawner targetSpawner;
     Achievements achievements;
     SaveLoad saveLoad;
+    AudioManager audioManager;
 
     //Parameters
     [SerializeField] Canvas preStartScreenCanvas;
@@ -57,6 +58,7 @@ public class GameController : MonoBehaviour {
         targetSpawner = FindObjectOfType<TargetSpawner>();
         achievements = GetComponent<Achievements>();
         saveLoad = FindObjectOfType<SaveLoad>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Start() {
@@ -64,17 +66,23 @@ public class GameController : MonoBehaviour {
         scoreText.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
+
+        audioManager.Stop("Title Theme");
+        audioManager.Play("Engine Sounds");
+        audioManager.Play("Main Music");
     }
 
     public void PauseGame() {
         if(gamePaused) {
             //Unpause
             Time.timeScale = 1f;
+            audioManager.Play("Engine Sounds");
             pauseButton.gameObject.SetActive(true);
             pauseCanvas.gameObject.SetActive(false);
             gamePaused = false;
         } else {
             //Pause
+            audioManager.Stop("Engine Sounds");
             pauseCanvas.gameObject.SetActive(true);
             pauseButton.gameObject.SetActive(false);
             gamePaused = true;
@@ -101,6 +109,10 @@ public class GameController : MonoBehaviour {
 
 
     //IN-GAME
+    public void PlayAudio(string audioName) {
+        audioManager.Play(audioName);
+    }
+
     public void AddScore(int score) {
         scoreHandler.AddScore(score);
     }
@@ -111,9 +123,11 @@ public class GameController : MonoBehaviour {
 
     public void AddTimer() {
         gameTimeHandler.AddTime(bonusTime);
+        audioManager.Play("Chime");
     }
 
     public void TimeOver() {
+        audioManager.Stop("Engine Sounds");
         scoreHandler.AddFinalScores();
         int totalScore = scoreHandler.GetTotalScore();
         int totalCombo = scoreHandler.GetHighestComboAchieved();

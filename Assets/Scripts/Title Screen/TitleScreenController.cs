@@ -7,6 +7,7 @@ using TMPro;
 public class TitleScreenController : MonoBehaviour {
 
     SaveLoad saveLoad;
+    AudioManager audioManager;
 
     [Header("High Scores and Achievements")]
     [SerializeField] TextMeshProUGUI bestScoreText;
@@ -29,10 +30,13 @@ public class TitleScreenController : MonoBehaviour {
 
     void Awake() {
         saveLoad = FindObjectOfType<SaveLoad>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Start() {
         LoadProgress();
+        audioManager.Stop("Main Music");
+        audioManager.Play("Title Theme");
     }
 
     public void LoadProgress() {

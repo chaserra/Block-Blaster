@@ -25,13 +25,16 @@ public class Target : MonoBehaviour {
     private bool isHit = false;
     private bool triggeredByExplosion = false;
 
-    void OnDrawGizmosSelected() {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, blastRadius);
+    //void OnDrawGizmosSelected() {
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, blastRadius);
+    //}
+
+    void Awake() {
+        gameController = FindObjectOfType<GameController>();
     }
 
     void Start() {
-        gameController = FindObjectOfType<GameController>();
         randomDelay = UnityEngine.Random.Range(minExplosionDelay, maxExplosionDelay);
         cachedDelay = new WaitForSeconds(randomDelay);
     }
