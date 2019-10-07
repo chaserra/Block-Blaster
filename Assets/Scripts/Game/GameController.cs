@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class GameController : MonoBehaviour {
 
@@ -65,8 +65,11 @@ public class GameController : MonoBehaviour {
     }
 
     void Start() {
+        AdManager.instance.DestroyBanner();
+
         LoadProgress();
         LoadPreferences();
+
         scoreText.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
         pauseButton.gameObject.SetActive(false);
@@ -74,6 +77,9 @@ public class GameController : MonoBehaviour {
         audioManager.Stop("Title Theme");
         audioManager.Play("Engine Sounds");
         audioManager.Play("Main Music");
+
+        AdManager.instance.RequestBannerAd();
+        AdManager.instance.ShowBanner();
     }
 
     public void PauseGame() {
@@ -84,12 +90,14 @@ public class GameController : MonoBehaviour {
             pauseButton.gameObject.SetActive(true);
             pauseCanvas.gameObject.SetActive(false);
             gamePaused = false;
+            AdManager.instance.HideBanner();
         } else {
             //Pause
             audioManager.Stop("Engine Sounds");
             pauseCanvas.gameObject.SetActive(true);
             pauseButton.gameObject.SetActive(false);
             gamePaused = true;
+            AdManager.instance.ShowBanner();
             Time.timeScale = 0f;
         }
     }
@@ -98,6 +106,7 @@ public class GameController : MonoBehaviour {
     public void StartGame() {
         pauseButton.gameObject.SetActive(true);
         preStartScreenCanvas.gameObject.SetActive(false);
+        AdManager.instance.DestroyBanner();
         StartCoroutine(StartGameWithDelay());
     }
 
@@ -141,6 +150,9 @@ public class GameController : MonoBehaviour {
         CheckAchievementsAndNewBest(totalScore, totalCombo);
         SaveProgress();
         LoadProgress();
+
+        AdManager.instance.RequestBannerAd();
+        AdManager.instance.ShowBanner();
     }
 
     //GETTERS AND SETTERS

@@ -36,8 +36,12 @@ public class TitleScreenController : MonoBehaviour {
     void Start() {
         LoadProgress();
         LoadPreferences();
+
         audioManager.Stop("Main Music");
         audioManager.Play("Title Theme");
+
+        AdManager.instance.RequestBannerAd();
+        AdManager.instance.ShowBanner();
     }
 
     public void LoadProgress() {
