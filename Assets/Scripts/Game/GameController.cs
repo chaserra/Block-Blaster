@@ -79,7 +79,6 @@ public class GameController : MonoBehaviour {
         audioManager.Play("Main Music");
 
         AdManager.instance.RequestBannerAd();
-        AdManager.instance.ShowBanner();
     }
 
     public void PauseGame() {
@@ -108,6 +107,7 @@ public class GameController : MonoBehaviour {
         preStartScreenCanvas.gameObject.SetActive(false);
         AdManager.instance.DestroyBanner();
         StartCoroutine(StartGameWithDelay());
+        AdManager.instance.RequestBannerAd();
     }
 
     IEnumerator StartGameWithDelay() {
