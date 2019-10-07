@@ -65,8 +65,6 @@ public class GameController : MonoBehaviour {
     }
 
     void Start() {
-        AdManager.instance.DestroyBanner();
-
         LoadProgress();
         LoadPreferences();
 
@@ -79,6 +77,7 @@ public class GameController : MonoBehaviour {
         audioManager.Play("Main Music");
 
         AdManager.instance.RequestBannerAd();
+        AdManager.instance.ShowBanner();
     }
 
     public void PauseGame() {
@@ -103,11 +102,10 @@ public class GameController : MonoBehaviour {
 
     //GAME START
     public void StartGame() {
+        AdManager.instance.HideBanner();
         pauseButton.gameObject.SetActive(true);
         preStartScreenCanvas.gameObject.SetActive(false);
-        AdManager.instance.DestroyBanner();
         StartCoroutine(StartGameWithDelay());
-        AdManager.instance.RequestBannerAd();
     }
 
     IEnumerator StartGameWithDelay() {
