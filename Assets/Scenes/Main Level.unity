@@ -9399,12 +9399,12 @@ PrefabInstance:
     - target: {fileID: 259362848142974743, guid: e8777616186abb242885ba6c743c03d9,
         type: 3}
       propertyPath: rotateSpeed
-      value: 130
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 1289552360887108908, guid: e8777616186abb242885ba6c743c03d9,
         type: 3}
       propertyPath: panSpeed
-      value: 100
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 963194228, guid: e8777616186abb242885ba6c743c03d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
