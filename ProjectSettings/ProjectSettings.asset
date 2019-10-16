@@ -120,7 +120,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.1.6
+  bundleVersion: 1.1.7
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -165,7 +165,7 @@ PlayerSettings:
     Standalone: com.QuaternionGames.BlockBlasterTest
     iPhone: com.QuaternionGames.BlockBlasterTest
   buildNumber:
-    iPhone: 2
+    iPhone: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0

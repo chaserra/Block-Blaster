@@ -40,7 +40,7 @@ public class AdManager : MonoBehaviour {
         #if UNITY_ANDROID
             string appId = "ca-app-pub-3940256099942544~3347511713";
         #elif UNITY_IPHONE
-            string appId = "ca-app-pub-3940256099942544~1458002511";
+            string appId = "ca-app-pub-2809056167239385~4202093992";
         #else
             string appId = "unexpected_platform";
         #endif
@@ -52,14 +52,17 @@ public class AdManager : MonoBehaviour {
         #if UNITY_ANDROID
             string bannerId = "ca-app-pub-3940256099942544/6300978111";
         #elif UNITY_IPHONE
-            string bannerId = "ca-app-pub-3940256099942544/2934735716";
+            string bannerId = "ca-app-pub-2809056167239385/5323603976";
         #else
             string bannerId = "unexpected_platform";
         #endif
 
         bannerView = new BannerView(bannerId, AdSize.Banner, AdPosition.Top);
 
-        AdRequest request = new AdRequest.Builder().Build();
+        AdRequest request = new AdRequest.Builder()
+            .AddTestDevice("d429435251a0328d716ca135a4661bfc")
+            .AddTestDevice("219b5280c42442add2717345b8710ad1")
+            .Build();
 
         bannerView.LoadAd(request);
     }
