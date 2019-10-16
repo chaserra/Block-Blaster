@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.5
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20837393, g: 0.46096528, b: 0.73065275, a: 0.5}
+  m_IndirectSpecularColor: {r: 0.20837542, g: 0.46096528, b: 0.7306529, a: 0.5}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8551,6 +8551,46 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6460481718791824274, guid: 6c5f89a799038e74aa24cead05a0941b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8661,49 +8701,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717890675790, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6460481717177697735, guid: 6c5f89a799038e74aa24cead05a0941b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6460481717436405530, guid: 6c5f89a799038e74aa24cead05a0941b,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6460481718566487503, guid: 6c5f89a799038e74aa24cead05a0941b,

@@ -165,7 +165,7 @@ PlayerSettings:
     Standalone: com.QuaternionGames.BlockBlasterTest
     iPhone: com.QuaternionGames.BlockBlasterTest
   buildNumber:
-    iPhone: 1
+    iPhone: 2
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
@@ -280,7 +280,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 79965e994eb8b2840a894cfbabd78483, type: 3}
+      m_Icon: {fileID: 2800000, guid: 7853d696282e811438c16aa400560c77, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -380,7 +380,7 @@ PlayerSettings:
       m_Kind: 0
       m_SubKind: iPad
     - m_Textures:
-      - {fileID: 2800000, guid: 79965e994eb8b2840a894cfbabd78483, type: 3}
+      - {fileID: 2800000, guid: 7853d696282e811438c16aa400560c77, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 4
