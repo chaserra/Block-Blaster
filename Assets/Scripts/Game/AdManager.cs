@@ -15,8 +15,8 @@ public class AdManager : MonoBehaviour {
     //private string appID = "ca-app-pub-2809056167239385~4202093992";
     //private string bannerID = "ca-app-pub-2809056167239385/5323603976";
     //---Android---
-    //private string appID = "";
-    //private string bannerID = "";
+    //private string appID = "ca-app-pub-2809056167239385~2241615805";
+    //private string bannerID = "ca-app-pub-2809056167239385/9391695128";
 
     //TEST IDs
     //-----iOS-----
@@ -38,7 +38,7 @@ public class AdManager : MonoBehaviour {
 
     private void Start() {
         #if UNITY_ANDROID
-            string appId = "ca-app-pub-3940256099942544~3347511713";
+            string appId = "ca-app-pub-2809056167239385~2241615805";
         #elif UNITY_IPHONE
             string appId = "ca-app-pub-2809056167239385~4202093992";
         #else
@@ -50,7 +50,7 @@ public class AdManager : MonoBehaviour {
 
     public void RequestBannerAd() {
         #if UNITY_ANDROID
-            string bannerId = "ca-app-pub-3940256099942544/6300978111";
+            string bannerId = "ca-app-pub-2809056167239385/9391695128";
         #elif UNITY_IPHONE
             string bannerId = "ca-app-pub-2809056167239385/5323603976";
         #else
@@ -62,6 +62,7 @@ public class AdManager : MonoBehaviour {
         AdRequest request = new AdRequest.Builder()
             .AddTestDevice("d429435251a0328d716ca135a4661bfc")
             .AddTestDevice("219b5280c42442add2717345b8710ad1")
+            .AddTestDevice("5724C5D85CA97C01B8FD6F0F3CBAB642")
             .Build();
 
         bannerView.LoadAd(request);
