@@ -63,6 +63,7 @@ public class AdManager : MonoBehaviour {
             .AddTestDevice("d429435251a0328d716ca135a4661bfc")
             .AddTestDevice("219b5280c42442add2717345b8710ad1")
             .AddTestDevice("5724C5D85CA97C01B8FD6F0F3CBAB642")
+            .AddTestDevice("457EE26876D5FC43C472BBD46D1A709A")
             .Build();
 
         bannerView.LoadAd(request);
